@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ButtonBase, Grid, Paper, styled, Typography } from "@mui/material";
 import { observer } from "mobx-react";
 import { Game } from "../../types";
@@ -11,6 +11,14 @@ const Img = styled('img')({
   });
 
 export const GameCardDisplay = observer((props: { game: Game, onClick: () => void }) => {
+    const [isFocus, setIsFocus] = useState(false);
+
+   const handleFocusIn = () => {
+      setIsFocus(true);
+   };
+   const handleFocusOut = () => {
+      setIsFocus(false);
+   };
 
     const showRating = (text: string) => {
         if (text === "" || text === null) {
@@ -28,6 +36,8 @@ export const GameCardDisplay = observer((props: { game: Game, onClick: () => voi
     };
 
     return (
+        <div className="Card" onFocus={handleFocusIn}
+        onBlur={handleFocusOut}>
         <Paper
             sx={{
                 p: 2,
@@ -39,6 +49,7 @@ export const GameCardDisplay = observer((props: { game: Game, onClick: () => voi
                 marginBottom: 1,
                 marginTop: 1,
                 boxShadow: 3,
+                background: isFocus? "#ff00ff" :null,
             }}
             data-testid={`gameCard-${props.game.name.replace(/\s/g, '')}`}
             onClick={props.onClick}
@@ -75,5 +86,6 @@ export const GameCardDisplay = observer((props: { game: Game, onClick: () => voi
             </Grid>
         </Grid> 
         </Paper>
+        </div>
     );
 });
