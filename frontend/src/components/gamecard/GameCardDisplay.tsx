@@ -17,6 +17,11 @@ export const GameCardDisplay = observer((props: { game: Game, onClick: () => voi
             return "";
         }
         const index = text.indexOf('-')
+
+        if (text.substring(index+2, index+4) === "Ne") {
+            return "";
+        }
+
         return "⭐ " + text.substring(index+2, index+4) + "%";
     };
 
