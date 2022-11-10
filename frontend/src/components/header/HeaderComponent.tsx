@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Card, Modal, CardContent, Button } from '@mui/material';
 import { useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import Steam from '../../images/steam.png';
+//import Steam from '../../images/steam.png';
 
 
 const style = {
@@ -46,7 +46,7 @@ export function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='relative'>
         <Toolbar>
-          <img src={Steam} alt="Steam" style={{ width: 30, height: 30, borderRadius: 50, marginRight: 6 }}  />
+          {/** <img src={Steam} alt="Steam" style={{ width: 30, height: 30, borderRadius: 50, marginRight: 6 }}/> */}
           <Typography variant="h5" sx={{ flexGrow: 1 }}>
             DAMP
           </Typography>
