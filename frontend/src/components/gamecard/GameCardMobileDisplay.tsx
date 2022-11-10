@@ -14,7 +14,13 @@ export const GameCardMobileDisplay = observer((props: { game: Game, onClick: () 
         if (text === "" || text === null) {
             return "";
         }
+
         const index = text.indexOf('-')
+
+        if (text.substring(index+2, index+4) === "Ne") {
+            return "";
+        }
+
         return "⭐ " + text.substring(index+2, index+4) + "%";
     };
 
