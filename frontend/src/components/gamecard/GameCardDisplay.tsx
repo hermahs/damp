@@ -49,7 +49,7 @@ export const GameCardDisplay = observer((props: { game: Game, onClick: () => voi
                 marginBottom: 1,
                 marginTop: 1,
                 boxShadow: 3,
-                background: isFocus? "#ff00ff" :null,
+                background: isFocus? "#ebecf0" :null,
             }}
             data-testid={`gameCard-${props.game.name.replace(/\s/g, '')}`}
             onClick={props.onClick}
