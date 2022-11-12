@@ -27,7 +27,7 @@ export const Sort = observer(() => {
     }
 
     return (
-        <Stack gap={1} direction='row' sx={{my: 2}}>
+        <Stack gap={1} direction='row' sx={{my: 2, width: '90%'}}>
             <FormControl>
                 <InputLabel id="typeLabel">Type</InputLabel>
                 <Select id="typeSelect" labelId="typeLabel" value={type} label="type" onChange={handleChangeType}>
