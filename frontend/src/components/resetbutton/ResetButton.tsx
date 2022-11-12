@@ -4,29 +4,28 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useStores } from '../../hooks';
 
 
-
 export const ResetButton = observer(() => {
 
     const[showButton, setShowButton] = useState<boolean>(false);
     const { store } = useStores();
 
     useEffect(() => {
-        if(store.filterStore.activeFilters.size > 0){
+        if(store.filterStore.activeFilters.size > 0 || store.dataStore.searchString !== "") {
             setShowButton(true);
         }
         else{
             setShowButton(false);
         }
-        //console.log(store.filterStore.activeFilters.size)
-    }, [store.filterStore.activeFilters.size]);
+        
+    }, [store.filterStore.activeFilters.size, store.dataStore.searchString.length]);
+
 
     const handleReset = () => {
-        console.log("Hola");
-        console.log(store.filterStore.activeFilters)
-
         Array.from(store.filterStore.activeFilters).forEach((filter) => {
             store.filterStore.removeFilter(filter.name);
         })
+        store.dataStore.setSearchString("");
+        store.dataStore.reloadData();
     }
 
     return (

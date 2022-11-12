@@ -36,6 +36,7 @@ export class DataStore {
             loading: observable,
             error: observable,
             allFound: observable,
+            searchString: observable,
             getMoreData: action,
             reloadData: action,
             setSort: action,

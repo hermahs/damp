@@ -13,16 +13,24 @@ import "../../App.css";
 import CloseIcon from '@mui/icons-material/Close';
 
 
-
 export const Search = observer(() => {
-  const [searchString, setSearchString] = useState<string>("");
+  
   const [openHelper, setOpenHelper] = useState<boolean>(false);
   const helperRef = useRef<HTMLDivElement>(null);
 
   const [openResetSearch, setOpenResetSearch] = useState<boolean>(false);
-  const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
-
+  
   const { store } = useStores();
+
+
+  useEffect(() => {
+    if (store.dataStore.searchString.length > 0) {
+      setOpenResetSearch(true);
+    } else {
+      setOpenResetSearch(false);
+    }
+  }, [store.dataStore.searchString.length]);
+
 
   const handleOpenHelper = () => {
     setOpenHelper(true);
@@ -38,13 +46,9 @@ export const Search = observer(() => {
 
 
   const handleResetSearch = () => {
-    setSearchString("");
     store.dataStore.setSearchString("");
     store.dataStore.reloadData();
-    setOpenResetSearch(false);
   };
-
-  
 
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +57,6 @@ export const Search = observer(() => {
     } else {
       setOpenResetSearch(false);
     }
-    setSearchString(event.target.value);
     store.dataStore.setSearchString(event.target.value);
     store.dataStore.reloadData();
   };
@@ -63,7 +66,7 @@ export const Search = observer(() => {
       <TextField
         data-testid="searchBox"
         sx={{ flexGrow: 1 }}
-        value={searchString}
+        value={store.dataStore.searchString}
         onChange={handleChange}
         InputProps={{
           endAdornment: (
