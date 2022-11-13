@@ -1,5 +1,5 @@
 import './App.css';
-import { Box, Container, createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material";
+import { Box, Container, createTheme, CssBaseline, GlobalStyles, responsiveFontSizes, ThemeProvider } from "@mui/material";
 import { Filter, Search, GameCards, Header, Sort } from "./components";
 import { Provider } from "mobx-react";
 import { defaultContext } from "./store";
@@ -17,9 +17,17 @@ const theme = responsiveFontSizes(createTheme({
   },
 }));
 
+const darkTheme = responsiveFontSizes(createTheme({
+  palette: {
+    mode: 'dark',
+  }
+}));
+
+
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <ApolloProvider client={client}>
         <Provider {...defaultContext}>
           <Box sx={{display: 'flex', flexDirection: 'column'}}>
