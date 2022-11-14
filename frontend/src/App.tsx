@@ -25,7 +25,7 @@ const darkTheme = responsiveFontSizes(createTheme({
 
 
 function App() {
-  return (
+  return (    
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <ApolloProvider client={client}>

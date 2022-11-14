@@ -37,10 +37,11 @@ const styleCard = {
 export function Header() {
 
   const [openModalInfo, setOpenModalInfo] = useState(false);
+  const [theme, setTheme] = useState("theme");
 
   const handleOpen = () => setOpenModalInfo(true);
   const handleClose = () => setOpenModalInfo(false);
-
+  const handleColor = () => theme === "theme" ? setTheme("darkTheme") : setTheme("theme");
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -50,6 +51,9 @@ export function Header() {
           <Typography variant="h5" sx={{ flexGrow: 1 }}>
             DAMP
           </Typography>
+          <Button color="inherit" onClick={handleColor}>
+            DarkMode
+          </Button>
           <Button color="inherit" onClick={handleOpen}>
             ABOUT
           </Button>
