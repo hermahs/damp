@@ -32,6 +32,13 @@ export const typeDefs = `
         comment: String
     }
 
+    type CommentReturn {
+        name: String
+        rating: Int
+        comment: String
+        updated: Boolean
+    }
+
     type Game {
         appId: Int
         name: String
@@ -57,11 +64,10 @@ export const typeDefs = `
     
     type Query {
         games(page: Int!, filter: FilterInput, sort: SortInput, search: String): [Game]
-        gameSearch(search: String!, page: Int = 0, filter: FilterInput, sort: SortInput): [Game]
         game(appId: Int!): Game
     }
 
     type Mutation {
-        addComment(game: Int!, comment: CommentInput!): Comment
+        addComment(game: Int!, comment: CommentInput!): CommentReturn
     }
 `

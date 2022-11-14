@@ -9,7 +9,9 @@ const config: Config.InitialOptions = {
     },
     modulePathIgnorePatterns: [
         "data"
-    ]
+    ],
+    collectCoverage: true,
+    coverageDirectory: "./coverage/" 
 }
 
 export default config; 
