@@ -2,6 +2,7 @@ import { Box, Button } from '@mui/material';
 import { observer } from 'mobx-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useStores } from '../../hooks';
+import { SortType } from '../../types';
 
 
 export const ResetButton = observer(() => {
@@ -24,6 +25,8 @@ export const ResetButton = observer(() => {
         Array.from(store.filterStore.activeFilters).forEach((filter) => {
             store.filterStore.removeFilter(filter.name);
         })
+        store.dataStore.sort.type = SortType.NONE;
+        store.dataStore.sort.ascending = true;
         store.dataStore.setSearchString("");
         store.dataStore.reloadData();
     }
