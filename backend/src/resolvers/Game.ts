@@ -121,22 +121,3 @@ export async function getGames(_1: any, args: any, _2: any, _3: any) {
 export async function getGame(_1: any, args: any, _2: any, _3: any) {
     return await Game.findOne({ appId: args.appId });
 }
-
-export async function getGameBySearch(_1: any, args: any, _2: any, _3: any) {
-
-
-
-    const data = await Game.find({
-        $or: [
-            {"name": { $regex: args.search, $options: 'i' }},
-            {"developer": { $regex: args.search, $options: 'i' }},
-            {"publisher": {
-                $regex: args.search,
-                $options: "i"
-            }}
-        ]
-        
-    }).skip(10*args.page).limit(10);
-
-    return data;
-}
