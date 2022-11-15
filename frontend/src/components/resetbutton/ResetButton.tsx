@@ -11,23 +11,25 @@ export const ResetButton = observer(() => {
     const { store } = useStores();
 
     useEffect(() => {
-        if(store.filterStore.activeFilters.size > 0 || store.dataStore.searchString !== "") {
+        if(store.filterStore.activeFilters.size > 0 || store.dataStore.searchString !== "" || store.dataStore.sort.type !== SortType.NONE) {
             setShowButton(true);
         }
         else{
             setShowButton(false);
         }
         
-    }, [store.filterStore.activeFilters.size, store.dataStore.searchString.length]);
+    }, [store.filterStore.activeFilters.size, 
+        store.dataStore.searchString.length,
+        store.dataStore.sort.type,
+    ]);
 
 
     const handleReset = () => {
         Array.from(store.filterStore.activeFilters).forEach((filter) => {
             store.filterStore.removeFilter(filter.name);
         })
-        store.dataStore.sort.type = SortType.NONE;
-        store.dataStore.sort.ascending = true;
         store.dataStore.setSearchString("");
+        store.dataStore.setSort(SortType.NONE, true);
         store.dataStore.reloadData();
     }
 

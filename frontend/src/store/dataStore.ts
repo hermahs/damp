@@ -37,6 +37,7 @@ export class DataStore {
             error: observable,
             allFound: observable,
             searchString: observable,
+            sort: observable,
             getMoreData: action,
             reloadData: action,
             setSort: action,
@@ -90,7 +91,6 @@ export class DataStore {
     setSort(type: SortType, ascending: boolean = true) {
         this.sort.ascending = ascending;
         this.sort.type = type;
-        this.reloadData();
     }
 
 }

@@ -15,26 +15,27 @@ export const Sort = observer(() => {
     useEffect(() => {
         // store.dataStore.setSort(SortType[type as keyof typeof SortType], (ascending === "ascending") ? true : false);
         
-        if (type === "NONE") {
+        if (store.dataStore.sort.type === SortType.NONE) {
             setSortButtonDisabled(true);
         }
         else {
             setSortButtonDisabled(false);
         }
-    }, [type, ascending]);
+    }, [store.dataStore.sort.type]);
 
     const handleChangeType = (event: SelectChangeEvent) => {
         setType(event.target.value);
-        store.dataStore.sort.type = SortType[event.target.value as keyof typeof SortType] 
+        store.dataStore.setSort(SortType[event.target.value as keyof typeof SortType], (ascending === "ascending") ? true : false);
     }
 
     const handleChangeAscending = (event: SelectChangeEvent) => {
         setAscending(event.target.value);
-        store.dataStore.sort.ascending = event.target.value === "ascending"
+        store.dataStore.setSort(SortType[type as keyof typeof SortType], (event.target.value === "ascending") ? true : false);
     }
 
     const applySort = () => {
         store.dataStore.setSort(SortType[type as keyof typeof SortType], (ascending === "ascending") ? true : false);
+        store.dataStore.reloadData();
     }
 
     
