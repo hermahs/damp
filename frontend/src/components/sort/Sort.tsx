@@ -8,11 +8,19 @@ export const Sort = observer(() => {
 
     const [type, setType] = useState<string>("NONE");
     const [ascending, setAscending] = useState<string>("ascending");
+    const [sortButtonDisabled, setSortButtonDisabled] = useState<boolean>(true);
 
     const { store } = useStores();
 
     useEffect(() => {
         // store.dataStore.setSort(SortType[type as keyof typeof SortType], (ascending === "ascending") ? true : false);
+        
+        if (type === "NONE") {
+            setSortButtonDisabled(true);
+        }
+        else {
+            setSortButtonDisabled(false);
+        }
     }, [type, ascending]);
 
     const handleChangeType = (event: SelectChangeEvent) => {
@@ -49,7 +57,7 @@ export const Sort = observer(() => {
                     <MenuItem value={"descending"}>Descending</MenuItem>
                 </Select>
             </FormControl>
-            <Button variant='outlined' sx={{backgroundColor: "#ECECEC"}} onClick={applySort}>Sort</Button>
+            <Button disabled={sortButtonDisabled} variant='outlined' sx={{backgroundColor: "#ECECEC"}} onClick={applySort}>Sort</Button>
         </Stack>
     )
 })
