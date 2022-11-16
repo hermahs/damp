@@ -162,7 +162,7 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                             {showDescription(store.modalStore.game.game_description)}
                         </Typography>
                         <br/>
-                        {store.modalStore.game.all_reviews.length > 0 && 
+                        {store.modalStore.game.all_reviews && 
                             <>  
                             <Typography gutterBottom variant="h6" component="div">
                                 Reviews
