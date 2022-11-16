@@ -41,13 +41,17 @@ export function Header() {
   const handleOpen = () => setOpenModalInfo(true);
   const handleClose = () => setOpenModalInfo(false);
 
+  const refreshPage = () => {
+    window.location.reload();
+  }
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='relative'>
         <Toolbar>
-          {/** <img src={Steam} alt="Steam" style={{ width: 30, height: 30, borderRadius: 50, marginRight: 6 }}  /> */}
-          <Typography variant="h5" sx={{ flexGrow: 1 }}>
+          {/** <img src={Steam} alt="Steam" style={{ width: 30, height: 30, borderRadius: 50, marginRight: 6 }}/> */}
+          <Typography variant="h5" sx={{ flexGrow: 1 }} onClick={refreshPage}>
             DAMP
           </Typography>
           <Button color="inherit" onClick={handleOpen}>

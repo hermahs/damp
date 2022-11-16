@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Popover,
   TextField,
   Typography,
@@ -8,13 +9,28 @@ import { observer } from "mobx-react";
 import React, { useEffect, useRef, useState } from "react";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { useStores } from "../../hooks";
+import "../../App.css";
+import CloseIcon from '@mui/icons-material/Close';
+
 
 export const Search = observer(() => {
-  const [searchString, setSearchString] = useState<string>("");
+  
   const [openHelper, setOpenHelper] = useState<boolean>(false);
   const helperRef = useRef<HTMLDivElement>(null);
 
+  const [openResetSearch, setOpenResetSearch] = useState<boolean>(false);
+  
   const { store } = useStores();
+
+
+  useEffect(() => {
+    if (store.dataStore.searchString.length > 0) {
+      setOpenResetSearch(true);
+    } else {
+      setOpenResetSearch(false);
+    }
+  }, [store.dataStore.searchString.length]);
+
 
   const handleOpenHelper = () => {
     setOpenHelper(true);
@@ -28,8 +44,19 @@ export const Search = observer(() => {
     setOpenHelper(!openHelper);
   };
 
+
+  const handleResetSearch = () => {
+    store.dataStore.setSearchString("");
+    store.dataStore.reloadData();
+  };
+
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchString(event.target.value);
+    if (event.target.value !== "") {  
+      setOpenResetSearch(true);
+    } else {
+      setOpenResetSearch(false);
+    }
     store.dataStore.setSearchString(event.target.value);
     store.dataStore.reloadData();
   };
@@ -39,19 +66,31 @@ export const Search = observer(() => {
       <TextField
         data-testid="searchBox"
         sx={{ flexGrow: 1 }}
-        value={searchString}
+        value={store.dataStore.searchString}
         onChange={handleChange}
         InputProps={{
           endAdornment: (
-            <Typography
-              sx={{ width: "fit-content" }}
-              ref={helperRef}
-              onClick={handleClickOpen}
-              onMouseEnter={handleOpenHelper}
-              onMouseLeave={handleCloseHelper}
-            >
-              <HelpOutlineIcon />
-            </Typography>
+            <div className="parent">
+              
+               {openResetSearch && <Button
+                  className="child"
+                  sx={{ width: "fit-content", marginTop: 0}}
+                  onClick={handleResetSearch}
+                >
+                  <CloseIcon />
+                </Button>}
+              
+              <Typography
+                className="child"
+                sx={{ width: "fit-content", marginTop: 0.8  }}
+                ref={helperRef}
+                onClick={handleClickOpen}
+                onMouseEnter={handleOpenHelper}
+                onMouseLeave={handleCloseHelper}
+              >
+                <HelpOutlineIcon />
+              </Typography>
+            </div>
           ),
         }}
         label="search"
