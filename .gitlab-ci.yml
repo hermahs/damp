@@ -13,6 +13,7 @@ test-frontend:
         coverage_format: cobertura
         path: ./frontend/coverage/cobertura-coverage.xml
     expire_in: "10 days"
+  coverage: '/All files\s+\|\s+\d+\.\d+/'
 
 test-backend:
   stage: test
@@ -26,3 +27,4 @@ test-backend:
         coverage_format: cobertura
         path: ./backend/coverage/cobertura-coverage.xml
     expire_in: "10 days"
+  coverage: '/All files\s+\|\s+\d+\.\d+/'
