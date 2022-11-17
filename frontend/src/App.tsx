@@ -29,7 +29,7 @@ function App() {
       <ApolloProvider client={client}>
         <Provider {...defaultContext}>
           <Box sx={{display: 'flex', flexDirection: 'column'}}>
-            <Header/>
+            <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
             <Container maxWidth='md' disableGutters>
               <Box sx={{margin: 2}}>
                 <Search/>

@@ -34,16 +34,11 @@ const styleCard = {
   overflowY: "scroll",
 };
 
-export function Header() {
+export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) => void}) {
   const [openModalInfo, setOpenModalInfo] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   const handleOpen = () => setOpenModalInfo(true);
   const handleClose = () => setOpenModalInfo(false);
-  // const handleColor = () => 
-  //{
-  //   (theme === "theme") ? setTheme("darkTheme") : setTheme("theme");    
-  // };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -53,7 +48,7 @@ export function Header() {
           <Typography variant="h5" sx={{ flexGrow: 1 }}>
             DAMP
           </Typography>
-          <Button color="inherit" onClick={() => setDarkMode(!darkMode)}>
+          <Button color="inherit" onClick={() => props.setDarkMode(!props.darkMode)}>
             DarkMode
           </Button>
           <Button color="inherit" onClick={handleOpen}>
