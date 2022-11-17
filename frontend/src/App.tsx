@@ -1,15 +1,23 @@
 import './App.css';
-import { Box, Container, createTheme, CssBaseline, GlobalStyles, responsiveFontSizes, ThemeProvider } from "@mui/material";
+import { Box, Container, createTheme, CssBaseline, responsiveFontSizes, ThemeProvider } from "@mui/material";
 import { Filter, Search, GameCards, Header, Sort } from "./components";
 import { Provider } from "mobx-react";
 import { defaultContext } from "./store";
 import { ApolloProvider } from '@apollo/client';
 import { client } from './util';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const val = localStorage.getItem("dark-mode")
+    if(val === "true"){
+      setDarkMode(true)
+    }
+  }, [])
+  
 
   const theme = responsiveFontSizes(createTheme({
     palette: {

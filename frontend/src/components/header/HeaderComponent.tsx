@@ -7,22 +7,6 @@ import { Card, Modal, CardContent, Button } from '@mui/material';
 import { useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-//import Steam from '../../images/steam.png';
-
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '60%',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  overflow: "hidden",
-  overflowY: "scroll",
-};
 const styleCard = {
   position: 'absolute' ,
   top: '50%',
@@ -48,7 +32,10 @@ export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) =>
           <Typography variant="h5" sx={{ flexGrow: 1 }}>
             DAMP
           </Typography>
-          <Button color="inherit" onClick={() => props.setDarkMode(!props.darkMode)}>
+          <Button color="inherit" onClick={() => {
+            localStorage.setItem("dark-mode", JSON.stringify(!props.darkMode))
+            props.setDarkMode(!props.darkMode)
+            }}>
             DarkMode
           </Button>
           <Button color="inherit" onClick={handleOpen}>
