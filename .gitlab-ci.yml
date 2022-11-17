@@ -1,7 +1,5 @@
 default:
   image: node:16.18-alpine
-  before_script:
-    - apt-get update
 
 test-frontend:
   stage: test
