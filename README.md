@@ -118,3 +118,33 @@ Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. 
 
 
 ## Oppgaven videre fra Prosjekt 3 
+Vi valgte bla bla bla
+
+## Tilbakemeldingene vi har fått
+
+* Reset page
+* Snapshot testing
+* Automatically add filter
+* Tabbing through the games
+* Display the games in a grid
+* Dark mode for sustainability
+* Comments in the code
+* Not show when there are no reviews
+* Disable sort button
+* Not show rating when no ratings
+* Problem with sorting on price
+* Improve size of tags box
+
+### Hva har vi fokusert på? 
+
+## Hvordan har vi forbedret oss i forhold til kravene?
+
+### Frontend
+
+### Backend
+
+### Testing
+
+### Web tilgjengelighet
+
+### Bærekraftig webutvikling
