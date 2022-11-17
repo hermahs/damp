@@ -1,7 +1,7 @@
 import type {Config} from "@jest/types"
 
 const config: Config.InitialOptions = {
-    preset: "ts-jest",
+    preset: "@shelf/jest-mongodb",
     testEnvironment: "node",
     transform: {
         '^.+\\.(ts|tsx)?$': 'ts-jest',
@@ -10,7 +10,7 @@ const config: Config.InitialOptions = {
     modulePathIgnorePatterns: [
         "data"
     ],
-    collectCoverage: true,
+    collectCoverage: true,  
     coverageReporters: ["html", "text", "text-summary", "cobertura"],
     coverageDirectory: "./coverage/" 
 }
