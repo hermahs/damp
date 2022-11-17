@@ -1,6 +1,7 @@
 import './App.css';
 import { Box, Container, createTheme, CssBaseline, responsiveFontSizes, ThemeProvider } from "@mui/material";
 import { Filter, Search, GameCards, Header, Sort } from "./components";
+import { ResetButton } from './components/resetbutton/ResetButton';
 import { Provider } from "mobx-react";
 import { defaultContext } from "./store";
 import { ApolloProvider } from '@apollo/client';
@@ -42,7 +43,13 @@ function App() {
               <Box sx={{margin: 2}}>
                 <Search/>
                 <Filter/>
-                <Sort/>
+                <div className='parent'>
+                  <Sort/>
+                  {/**<Button sx={{backgroundColor: "blue", width: "10%", marginTop: 3, borderRadius: 5, height: '50%'}}>
+                      Reset
+                  </Button> */}
+                  <ResetButton/>
+                </div>
               </Box>
               <GameCards/>
             </Container>

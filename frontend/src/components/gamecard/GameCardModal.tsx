@@ -162,12 +162,16 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                             {showDescription(store.modalStore.game.game_description)}
                         </Typography>
                         <br/>
-                        <Typography gutterBottom variant="h6" component="div">
-                            Reviews
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            {store.modalStore.game.all_reviews}
-                        </Typography>
+                        {store.modalStore.game.all_reviews && 
+                            <>  
+                            <Typography gutterBottom variant="h6" component="div">
+                                Reviews
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                {store.modalStore.game.all_reviews}
+                            </Typography> 
+                            </>
+                        }
                     </CardContent>
                     <CardActions>
                         <Accordion sx={{width: 1}}>

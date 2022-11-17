@@ -383,19 +383,8 @@ export const FilterSettingsPopularTags = (props: IFilterSettingTypeProp) => {
     const [error, setError] = useState<string>("");
     const [tagList, setTagList] = useState<string[]>([]);
 
-    const handleChange = (_: any, value: string | null) => {
-        if (value !== null) addTag(value);
-    }
-
-    const handleRemove = (remTag: string) => {
-        const k = tagList.filter(a => a !== remTag);
-        setTagList(k);
-    }
-
-    const addTag = (t: string) => {
-        if (!(t in tagList)) {
-            setTagList([...tagList, t]);
-        }
+    const addTag = (t: string[]) => {
+        setTagList(t);
     }
 
     const addFilter = () => {
@@ -413,27 +402,27 @@ export const FilterSettingsPopularTags = (props: IFilterSettingTypeProp) => {
         })
     }
 
+    const handleInput = (e: React.SyntheticEvent, value: string[]) => {
+        if (value !== null) {
+            addTag(value);
+        }
+      };
+
+
+   
+
     return (
-       <FormControl sx={{
-            width: 1
-       }}>
+       <FormControl sx={{ width: 1, height: 200 }}>
             <Autocomplete
-                disablePortal
-                id="popularTags"
+                multiple
+                id="popularTags1"
                 options={tags}
-                onChange={handleChange}
-                renderInput={(params) => <TextField {...params} InputProps={{...params.InputProps, type: 'search'}} label="Tags" />}
-                sx={{
-                }}
+                onChange={handleInput}
+                getOptionLabel={(option) => option}
+                renderInput={(params) => (
+                <TextField {...params} InputProps={{...params.InputProps, type: 'search'}} label="Tags" placeholder="Tag" />
+                )}
             />
-            <Paper sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                my: 1,
-            }}>
-                {tagList.map(a => (<Chip key={a} sx={{m: 0.5}} variant='outlined' label={a} clickable onClick={() => handleRemove(a)}/>))}
-            </Paper>
             <Button onClick={addFilter}>Add filter</Button>
             <Alert severity='error' sx={{display: (error === "") ? 'none' : 'inherit'}}>{error}</Alert>
        </FormControl> 
