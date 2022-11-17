@@ -32,8 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "concurrently \"npm start\" \"npx cypress open\"",
-    "test2": "jest --config jest.config.ts"
+    "cypress": "concurrently \"npm start\" \"npx cypress open\""
   },
   "eslintConfig": {
     "extends": [
@@ -63,6 +62,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/"
-    ]
+    ],
+    "coverageReporters": ["html", "text", "text-summary", "cobertura"]
   }
 }

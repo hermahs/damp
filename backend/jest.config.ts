@@ -11,6 +11,7 @@ const config: Config.InitialOptions = {
         "data"
     ],
     collectCoverage: true,
+    coverageReporters: ["html", "text", "text-summary", "cobertura"],
     coverageDirectory: "./coverage/" 
 }
 

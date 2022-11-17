@@ -10,7 +10,8 @@ test-frontend:
   artifacts:
     reports:
       coverage_report:
-        path: coverage/lcov-report/index.html
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
     expire_in: "10 days"
 
 test-backend:
@@ -22,5 +23,6 @@ test-backend:
   artifacts:
     reports:
       coverage_report:
-        path: coverage/lcov-report/index.html
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
     expire_in: "10 days"
