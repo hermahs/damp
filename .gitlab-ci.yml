@@ -1,5 +1,5 @@
 default:
-  image: node:16.18-alpine
+  image: node:16.18
 
 test-frontend:
   stage: test
