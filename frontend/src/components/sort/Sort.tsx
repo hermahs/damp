@@ -58,7 +58,7 @@ export const Sort = observer(() => {
                     <MenuItem value={"descending"}>Descending</MenuItem>
                 </Select>
             </FormControl>
-            <Button disabled={sortButtonDisabled} variant='outlined' sx={{backgroundColor: "#ECECEC"}} onClick={applySort}>Sort</Button>
+            <Button disabled={sortButtonDisabled} variant='outlined' sx={{backgroundColor: "#BEBEBE"}} onClick={applySort}>Sort</Button>
         </Stack>
     )
 })
