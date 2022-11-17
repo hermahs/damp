@@ -99,3 +99,22 @@ Vi har brukt mobx og apollo client til å lagre tilstanden fortløpende så vi i
 - Vi har brukt TypeScript i applikasjonen vår, som bruker mye mer energi enn JavaScript. Vi brukte TypeScript da dette var et krav til oppgaven og det skalerer bedre enn JavaScript, men i en så liten applikasjon som dette kunne man tenkt mer bærekraftig og brukt JavaScript.
 
 Hovedpoenget med å vurdere bærekraft i webutvikling er ikke at det enkelte prosjektet har så mye å si, men at om alle er mer oppmerksomme på konsekvensene og hvordan man kan forebygge det, så kan den totale summen få stor utteling. I så godt som alle applikasjoner er det rom for å tenke bærekraftig, uten at det skal gå på bekostning av funksjonalitet, design eller brukervennlighet. Bærekraftsmålene handler ikke om at en handling skal være en fullstendig løsning, men at hvis alle bidrar har vi en bedre sjanse sammen.
+
+# Prosjekt 4 - IT2810 Webutvikling
+
+## Kommandoer
+
+Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. Begge må kjøre for at applikasjonen skal fungere.
+
+### How to test - rask guide
+
+* Vanlige tester
+    - Backend -> `cd backend && npm run test`
+    - Frontend -> `cd frontend && npm run test`
+* E2E
+    1. Start backend -> `cd backend && npm run dev`. Dette starter backend i test modus
+    2. start frontend -> `cd frontend && npm start`
+    3. kjør cypress -> `cd frontend && npm run cypress`
+
+
+## Oppgaven videre fra Prosjekt 3 
