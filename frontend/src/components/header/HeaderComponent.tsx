@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Card, Modal, CardContent, Button } from '@mui/material';
 import { useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 //import Steam from '../../images/steam.png';
 
 
@@ -33,15 +34,16 @@ const styleCard = {
   overflowY: "scroll",
 };
 
-
 export function Header() {
-
   const [openModalInfo, setOpenModalInfo] = useState(false);
-  const [theme, setTheme] = useState("theme");
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleOpen = () => setOpenModalInfo(true);
   const handleClose = () => setOpenModalInfo(false);
-  const handleColor = () => theme === "theme" ? setTheme("darkTheme") : setTheme("theme");
+  // const handleColor = () => 
+  //{
+  //   (theme === "theme") ? setTheme("darkTheme") : setTheme("theme");    
+  // };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -51,7 +53,7 @@ export function Header() {
           <Typography variant="h5" sx={{ flexGrow: 1 }}>
             DAMP
           </Typography>
-          <Button color="inherit" onClick={handleColor}>
+          <Button color="inherit" onClick={() => setDarkMode(!darkMode)}>
             DarkMode
           </Button>
           <Button color="inherit" onClick={handleOpen}>

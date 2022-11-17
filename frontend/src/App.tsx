@@ -5,32 +5,26 @@ import { Provider } from "mobx-react";
 import { defaultContext } from "./store";
 import { ApolloProvider } from '@apollo/client';
 import { client } from './util';
-
-const theme = responsiveFontSizes(createTheme({
-  palette: {
-    primary: {
-      main: "#283044",
-    },
-    secondary: {
-      main: "#EB5160",
-    },
-  },
-}));
-
-const darkTheme = responsiveFontSizes(createTheme({
-  palette: {
-    mode: 'dark',
-  }
-}));
+import { useState } from 'react';
 
 
 function App() {
-<<<<<<< HEAD
-  return (    
-=======
+  const [darkMode, setDarkMode] = useState(false);
+
+  const theme = responsiveFontSizes(createTheme({
+    palette: {
+      mode: darkMode ? "dark" : "light",
+      primary: {
+        main: "#283044",
+      },
+      secondary: {
+        main: "#EB5160",
+      },
+    },
+  }));
+
   return (
->>>>>>> a6d03267acdb440bf73cb7b07a3adc3d60c966e3
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <ApolloProvider client={client}>
         <Provider {...defaultContext}>
