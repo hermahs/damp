@@ -4,7 +4,6 @@ import {
   fireEvent,
   render,
   screen,
-  waitFor,
   within,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -14,8 +13,7 @@ import "@testing-library/jest-dom";
 import { GameCards } from "../gamecard";
 import { Provider } from "mobx-react";
 import { store } from "../../store";
-import { act } from "react-dom/test-utils";
-import { runInAction } from "mobx";
+import renderer from "react-test-renderer";
 
 const mocks = [
   {
@@ -147,17 +145,13 @@ const mocks = [
   },
 ];
 
-const mockStore = {
-
-}
-
 afterEach(cleanup);
 
 describe("Searchbar test", () => {
   it("renders with correct search", () => {
     render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <Search/>
+        <Search />
       </MockedProvider>
     );
 
@@ -185,14 +179,29 @@ describe("Searchbar test", () => {
       <MockedProvider mocks={mocks} addTypename={false}>
         <Provider {...store}>
           <Search />
-          <GameCards/>
+          <GameCards />
         </Provider>
       </MockedProvider>
     );
     screen.getByTestId("searchBox");
-    const field = within(screen.getByTestId("searchBox")).getByLabelText("search");
+    const field = within(screen.getByTestId("searchBox")).getByLabelText(
+      "search"
+    );
     expect(field).toBeInTheDocument();
-    fireEvent.change(field, {target: { value: "trackmania" }});
+    fireEvent.change(field, { target: { value: "trackmania" } });
     expect(screen.getByDisplayValue("trackmania")).toBeInTheDocument();
+  });
+});
+
+describe("Searchbar snapshot test", () => {
+  it("render searcherbar", () => {
+    const tree = renderer
+      .create(
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Search />
+        </MockedProvider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });

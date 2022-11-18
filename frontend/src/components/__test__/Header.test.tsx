@@ -3,6 +3,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { useEffect, useState } from "react";
 import { act } from "react-dom/test-utils";
+import renderer from "react-test-renderer";
 
 function TestComponent() {
   const [darkMode, setDarkMode] = useState(false);
@@ -44,8 +45,8 @@ describe("test header component", () => {
       charCode: 27,
     });
 
-    const modal = screen.queryByText(/how to use damp/i)
-    expect(modal).not.toBeInTheDocument()
+    const modal = screen.queryByText(/how to use damp/i);
+    expect(modal).not.toBeInTheDocument();
   });
 
   it("handles darkmode toggle", async () => {
@@ -60,5 +61,14 @@ describe("test header component", () => {
       screen.getByText(/darkmode/i).click();
     });
     await waitFor(() => screen.findByText(/false/i));
+  });
+});
+
+describe("header snapshot tests", () => {
+  it("basic snapshot test", () => {
+    const tree = renderer
+      .create(<Header darkMode={false} setDarkMode={() => {}} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
