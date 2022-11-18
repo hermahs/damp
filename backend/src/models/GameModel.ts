@@ -1,12 +1,6 @@
 import mongoose from "mongoose"
 import { IGame } from "../types";
 
-interface Comment {
-    name: string;
-    rating: number;
-    comment: string;
-}
-
 export const GameSchema = new mongoose.Schema<IGame>({
     name: {
         type: String,
@@ -74,4 +68,4 @@ export const GameSchema = new mongoose.Schema<IGame>({
     }
 });
 
-export const Game = mongoose.model('Game', GameSchema);    
+export const Game = mongoose.model('Game', GameSchema);
