@@ -4,6 +4,7 @@ import { defaultContext, store } from "../../store";
 import { MockedProvider } from "@apollo/client/testing";
 import { Provider } from "mobx-react";
 import { Game, Comment } from "../../types";
+import renderer from "react-test-renderer";
 
 const comment: Comment = {
   name: "the watcher",
@@ -87,5 +88,20 @@ describe("GameCards test", () => {
 
     screen.getByText(/elden ring/i);
     screen.getByText(/trackmania/i);
+  });
+});
+
+describe("Filter snapshot test", () => {
+  it("render filter component", () => {
+    const tree = renderer
+      .create(
+        <Provider {...defaultContext}>
+          <MockedProvider addTypename={false}>
+            <GameCards />
+          </MockedProvider>
+        </Provider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });

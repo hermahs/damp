@@ -1,0 +1,311 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter snapshot test render filter component 1`] = `
+<div
+  className="MuiBox-root css-0"
+  data-testid="gameCardContainer"
+>
+  <div
+    className="Card"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-hnc04z-MuiPaper-root"
+      data-testid="gameCard-Overcooked"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 css-480o17-MuiGrid-root"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+        >
+          <button
+            className="MuiButtonBase-root css-1u38bio-MuiButtonBase-root"
+            data-testid="img379720"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <img
+              alt="complex"
+              className="css-zgsqfz"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/379720/header.jpg"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-true css-1by6gcb-MuiGrid-root"
+        >
+          <div
+            className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-grid-xs-true css-hfwr93-MuiGrid-root"
+          >
+            <div
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+            >
+              <div
+                className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-h93ljk-MuiTypography-root"
+              >
+                Overcooked
+              </div>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Published: 
+                May 12, 1962
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Publisher:
+                 
+                Gutta boys
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Genre: 
+                Action
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-auto css-1wrgmsj-MuiGrid-root"
+          >
+            <div
+              className="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="Card"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-hnc04z-MuiPaper-root"
+      data-testid="gameCard-Trackmania"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 css-480o17-MuiGrid-root"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+        >
+          <button
+            className="MuiButtonBase-root css-1u38bio-MuiButtonBase-root"
+            data-testid="img379721"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <img
+              alt="complex"
+              className="css-zgsqfz"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/379720/header.jpg"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-true css-1by6gcb-MuiGrid-root"
+        >
+          <div
+            className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-grid-xs-true css-hfwr93-MuiGrid-root"
+          >
+            <div
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+            >
+              <div
+                className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-h93ljk-MuiTypography-root"
+              >
+                Trackmania
+              </div>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Published: 
+                September 17, 1959
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Publisher:
+                 
+                Kara fra Sahra
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Genre: 
+                Strategy
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-auto css-1wrgmsj-MuiGrid-root"
+          >
+            <div
+              className="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="Card"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-hnc04z-MuiPaper-root"
+      data-testid="gameCard-EldenRing"
+      onClick={[Function]}
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 css-480o17-MuiGrid-root"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+        >
+          <button
+            className="MuiButtonBase-root css-1u38bio-MuiButtonBase-root"
+            data-testid="img379722"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <img
+              alt="complex"
+              className="css-zgsqfz"
+              src="https://cdn.akamai.steamstatic.com/steam/apps/379720/header.jpg"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-true css-1by6gcb-MuiGrid-root"
+        >
+          <div
+            className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column MuiGrid-grid-xs-true css-hfwr93-MuiGrid-root"
+          >
+            <div
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+            >
+              <div
+                className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-h93ljk-MuiTypography-root"
+              >
+                Elden Ring
+              </div>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Published: 
+                December 6, 1999
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Publisher:
+                 
+                Børge
+              </p>
+              <p
+                className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-ejgmvm-MuiTypography-root"
+              >
+                Genre: 
+                RPG
+              </p>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-auto css-1wrgmsj-MuiGrid-root"
+          >
+            <div
+              className="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root css-3rgs8z"
+  >
+    <span
+      className="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-5106e7-MuiCircularProgress-root"
+      role="progressbar"
+      style={
+        Object {
+          "height": 40,
+          "width": 40,
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+          cx={44}
+          cy={44}
+          fill="none"
+          r={20.2}
+          strokeWidth={3.6}
+          style={Object {}}
+        />
+      </svg>
+    </span>
+  </div>
+  <div
+    style={
+      Object {
+        "bottom": "20px",
+        "position": "fixed",
+        "right": "50%",
+      }
+    }
+  />
+</div>
+`;
