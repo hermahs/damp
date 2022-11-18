@@ -63,6 +63,11 @@
       "src/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/"
     ],
-    "coverageReporters": ["html", "text", "text-summary", "cobertura"]
+    "coverageReporters": [
+      "html",
+      "text",
+      "text-summary",
+      "cobertura"
+    ]
   }
 }
