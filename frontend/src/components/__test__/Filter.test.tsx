@@ -3,6 +3,7 @@ import { render, screen, cleanup, within } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { Provider } from "mobx-react";
 import { defaultContext, store } from "../../store";
+import renderer from "react-test-renderer";
 
 afterEach(cleanup);
 
@@ -229,5 +230,12 @@ describe("Filter test", () => {
       expect(filter.name).toMatch(/genre/i);
       expect(filter.data?.visualData).toMatch(/action/i);
     });
+  });
+});
+
+describe("Filter snapshot test", () => {
+  it("render filter component", () => {
+    const tree = renderer.create(<Filter />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
