@@ -1,3 +1,5 @@
+[![coverage report](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/badges/main/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/-/commits/main) 
+
 # Prosjekt 3 - IT2810 Webutvikling
 
 Prosjektet går ut på å hente data fra en database og implementere søk og interaksjon for å visualisere dataen. Vi har valgt å kalle applikasjonen vår Damp, som har som hensikt å hente ut ulike spill for PC. Til dette har vi valgt å bruke et datasett som inneholder over 40.000 spillobjekter.
