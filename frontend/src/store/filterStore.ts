@@ -1,4 +1,4 @@
-import { observable, action, makeObservable, runInAction } from 'mobx';
+import { observable, action, makeObservable, runInAction, computed } from 'mobx';
 import { RootStore } from './rootStore';
 
 export interface IFilterData {
@@ -32,7 +32,6 @@ export class FilterStore {
         {name: "Tags", color: "#EB5757", description: "The tags of the game"}]);
     queryFilter: ReturnData = observable.object<ReturnData>({});
     rootStore: RootStore;
-
     selectedFilter: IFilter | undefined;
     showModalInfo: boolean = false;
 
@@ -43,8 +42,15 @@ export class FilterStore {
             allFilters: observable,
             queryFilter: observable,
             addFilter: action,
-            removeFilter: action
+            removeFilter: action,
+            resetStore: action,
+            resetable: computed
         });
+    }
+
+    get resetable(): boolean {
+        if (Array.from(this.activeFilters).length > 0) return true;
+        return false;
     }
 
     private addFilterQuery (filter: IFilter) {
@@ -112,6 +118,14 @@ export class FilterStore {
         runInAction(() => {
             this.showModalInfo = false;
             this.selectedFilter = undefined;
+        });
+    }
+
+    resetStore() {
+        Array.from(this.activeFilters).forEach(filter => {
+            const f = this.getFromSet(this.activeFilters, filter.name);
+            this.removeFilterQuery(f);
+            this.allFilters.add(f);
         });
     }
 }
