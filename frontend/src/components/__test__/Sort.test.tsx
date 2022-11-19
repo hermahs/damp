@@ -4,9 +4,7 @@ import {
   render,
   screen,
   cleanup,
-  act,
   fireEvent,
-  within,
 } from "@testing-library/react";
 
 beforeEach(() => {
