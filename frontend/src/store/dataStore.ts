@@ -1,4 +1,4 @@
-import { action, IObservableArray, makeObservable, observable, runInAction } from "mobx";
+import { action, computed, IObservableArray, makeObservable, observable, runInAction } from "mobx";
 import { Game, SortType } from "../types";
 import { LOAD_GAMES } from "../graphQL";
 import { client } from "../util";
@@ -41,11 +41,18 @@ export class DataStore {
             getMoreData: action,
             reloadData: action,
             setSort: action,
-            setSearchString: action
+            setSearchString: action,
+            resetStore: action,
+            resetable: computed
         });
         runInAction(() => {
             this.getMoreData();
         });
+    }
+
+    get resetable(): boolean {
+        if (this.pageNumber > 1 || this.data.length > 15 || this.sort.type !== SortType.NONE) return true
+        return false;
     }
 
     async reloadData() {
@@ -91,6 +98,17 @@ export class DataStore {
     setSort(type: SortType, ascending: boolean = true) {
         this.sort.ascending = ascending;
         this.sort.type = type;
+    }
+
+    resetStore() {
+        this.pageNumber = 0
+        this.loading = false;
+        this.error = undefined;
+        this.data.clear();
+        this.sort = {
+            ascending: true,
+            type: SortType.NONE
+        };
     }
 
 }

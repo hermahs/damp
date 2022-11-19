@@ -1,5 +1,5 @@
 import { ObservableQuery } from "@apollo/client";
-import { action, makeObservable, observable, runInAction } from "mobx";
+import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import { GET_SINGLE_GAME } from "../graphQL";
 import { Game } from "../types";
 import { client } from "../util";
@@ -23,8 +23,14 @@ export class ModalStore {
             updating: observable,
             selectGame: action,
             unSelectGame: action,
-            updateGameData: action
-        })
+            updateGameData: action,
+            resetable: computed
+        });
+    }
+
+    get resetable(): boolean {
+        if (this.selectedGame > -1 || this.game) return true;
+        return false;
     }
 
     selectGame(appId: number) {
@@ -56,4 +62,10 @@ export class ModalStore {
         })
     }
 
+    resetStore() {
+        this.selectedGame= -1;
+        this.game = undefined;
+        this.showModal = false;
+        this.updating = false;
+    }
 }
