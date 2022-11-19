@@ -19,9 +19,6 @@ export class RootStore {
     }
 
     get enableResetButton(): boolean {
-        console.log(this.dataStore.resetable)
-        console.log(this.modalStore.resetable)
-        console.log(this.filterStore.resetable)
         if (this.dataStore.resetable || this.modalStore.resetable || this.filterStore.resetable) return true;
         return false;
     }
