@@ -1,4 +1,4 @@
-import { ObservableQuery } from "@apollo/client";
+import { ApolloClient, NormalizedCacheObject, ObservableQuery } from "@apollo/client";
 import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import { GET_SINGLE_GAME } from "../graphQL";
 import { Game } from "../types";
@@ -11,12 +11,13 @@ export class ModalStore {
     showModal: boolean = false;
     updating: boolean = false;
     rootStore: RootStore;
-    q: ObservableQuery = client.watchQuery({
-        query: GET_SINGLE_GAME
-    });
+    query: ObservableQuery;
 
-    constructor(rootStore: RootStore) {
+    constructor(rootStore: RootStore, inClient: ApolloClient<NormalizedCacheObject> = client) {
         this.rootStore = rootStore;
+        this.query = inClient.watchQuery({
+            query: GET_SINGLE_GAME
+        });
         makeObservable(this, {
             game: observable,
             showModal: observable,
@@ -34,7 +35,7 @@ export class ModalStore {
     }
 
     selectGame(appId: number) {
-        this.q.refetch({
+        this.query.refetch({
             appId: appId
         }).then(action("getSuccess", ({data}) => {
             this.game = data.game as Game;
@@ -44,9 +45,9 @@ export class ModalStore {
     }
 
     updateGameData() {
-        this.updating = true;
         if (this.selectedGame === -1) return;
-        this.q.refetch({
+        this.updating = true;
+        this.query.refetch({
             appId: this.selectedGame
         }).then(action("getSuccess", ({ data }) => {
             this.game = data.game as Game;
@@ -63,7 +64,7 @@ export class ModalStore {
     }
 
     resetStore() {
-        this.selectedGame= -1;
+        this.selectedGame = -1;
         this.game = undefined;
         this.showModal = false;
         this.updating = false;

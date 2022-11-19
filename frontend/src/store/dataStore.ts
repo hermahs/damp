@@ -2,7 +2,7 @@ import { action, computed, IObservableArray, makeObservable, observable, runInAc
 import { Game, SortType } from "../types";
 import { LOAD_GAMES } from "../graphQL";
 import { client } from "../util";
-import { ApolloError, ObservableQuery } from "@apollo/client";
+import { ApolloClient, ApolloError, NormalizedCacheObject, ObservableQuery } from "@apollo/client";
 import { RootStore } from "./rootStore";
 
 interface ISort {
@@ -19,9 +19,10 @@ export class DataStore {
     error: ApolloError | undefined;
     sort: ISort;
     rootStore: RootStore
-    query: ObservableQuery = client.watchQuery({query: LOAD_GAMES});
+    query: ObservableQuery;
 
-    constructor(rootStore: RootStore) {
+    constructor(rootStore: RootStore, inClient: ApolloClient<NormalizedCacheObject> = client) {
+        this.query = inClient.watchQuery({query: LOAD_GAMES});
         this.pageNumber = 0
         this.loading = false;
         this.error = undefined;
@@ -77,10 +78,9 @@ export class DataStore {
         };
         this.error = undefined;
         this.loading = true;
-        client.query({
-            query: LOAD_GAMES,
+        this.query.refetch(
             variables
-        }).then(
+        ).then(
             action("getSucces", ({data}) => {
                 this.data.push(...data.games);
                 this.loading = false;
@@ -90,7 +90,6 @@ export class DataStore {
                 }
             })
         ).catch(action("getError", (error: ApolloError) => {
-            console.log(error);
             this.error = error;
         }))
     }

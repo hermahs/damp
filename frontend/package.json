@@ -53,6 +53,9 @@
     ]
   },
   "devDependencies": {
+    "@graphql-tools/mock": "^8.7.12",
+    "@graphql-tools/schema": "^9.0.10",
+    "@jest/globals": "^29.3.1",
     "@types/jest": "^29.2.3",
     "@types/react-test-renderer": "^18.0.0",
     "concurrently": "^7.5.0",
