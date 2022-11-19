@@ -32,7 +32,9 @@ describe("test header component", () => {
 
   it("about loads correctly", async () => {
     render(<Header darkMode={false} setDarkMode={() => {}} />);
-    screen.getByText(/about/i).click();
+    act(() => {
+      screen.getByText(/about/i).click();
+    })
     act(() => {
       screen.getByText(/darkmode/i).click();
     });
