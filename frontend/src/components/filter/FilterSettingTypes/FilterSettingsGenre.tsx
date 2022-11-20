@@ -36,7 +36,6 @@ const genre = [ 'Accounting',
  'Violent',
  'Web Publishing']
 
-
 export const FilterSettingsGenre = (props: IFilterSettingTypeProp) => {
     const [activeFilters, setActiveFilters] = useState<string[]>([]);
     const [error, setError] = useState<string>("");
