@@ -4,6 +4,7 @@ import { act } from "react-dom/test-utils";
 import { Provider } from "mobx-react";
 import { defaultContext, store } from "../../store";
 import renderer from "react-test-renderer";
+import userEvent from "@testing-library/user-event";
 
 beforeEach(() => {
   store.resetStores();
@@ -236,6 +237,37 @@ describe("Filter test", () => {
     });
   });
 
+  it.only("apply tags", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+    
+    act(() => {
+      screen.getByText(/tags/i).click();
+    });
+    
+    act(() => {
+      screen.getByRole('combobox', {
+        name: /tags/i
+      }).click()
+    })
+
+    userEvent.type(screen.getByRole('combobox', {
+      name: /tags/i
+    }), "2d{arrowdown}{enter}");
+    
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+ 
+  });
+
   it("apply achievements filter without choosing an option", () => {
     render(<Filter />);
 
@@ -277,7 +309,29 @@ describe("Filter test", () => {
         .click();
     });
 
-    screen.getByText(/please select genre(s) to filter/i);
+    screen.getByText(/please select genre\(s\) to filter/i);
+  });
+
+  it("apply tags filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/tags/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/please select a tag to filter/i);
   });
 });
 
