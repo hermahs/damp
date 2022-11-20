@@ -5,6 +5,10 @@ import { Provider } from "mobx-react";
 import { defaultContext, store } from "../../store";
 import renderer from "react-test-renderer";
 
+beforeEach(() => {
+  store.resetStores()
+})
+
 afterEach(cleanup);
 
 describe("Filter test", () => {

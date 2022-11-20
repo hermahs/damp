@@ -10,7 +10,6 @@ export const ResetButton = observer(() => {
     const { store } = useStores();
 
     useEffect(() => {
-        console.log(store.enableResetButton);
         setShowButton(store.enableResetButton);
     }, [store.enableResetButton]);
 
