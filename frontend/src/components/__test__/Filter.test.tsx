@@ -256,9 +256,8 @@ describe("Filter test", () => {
     });
 
     act(() => {
-      screen.getByTestId('slider').click()
+      screen.getByTestId("slider").click();
     });
-
 
     act(() => {
       screen
@@ -267,7 +266,6 @@ describe("Filter test", () => {
         })
         .click();
     });
-
   });
 
   it("apply date filter with invalid date", () => {
@@ -281,9 +279,12 @@ describe("Filter test", () => {
       screen.getByText(/releasedate/i).click();
     });
 
-    userEvent.type(screen.getByRole('textbox', {
-      name: /after/i
-    }), "23")
+    userEvent.type(
+      screen.getByRole("textbox", {
+        name: /after/i,
+      }),
+      "23"
+    );
 
     act(() => {
       screen
@@ -293,7 +294,72 @@ describe("Filter test", () => {
         .click();
     });
 
-    screen.getByText(/releasedate \| after invalid date/i)
+    screen.getByText(/releasedate \| after invalid date/i);
+  });
+
+  it("apply date filter with valid start and end date", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/releasedate/i).click();
+    });
+
+    userEvent.type(
+      screen.getByRole("textbox", {
+        name: /after/i,
+      }),
+      "06062022"
+    );
+
+    userEvent.type(
+      screen.getByRole("textbox", {
+        name: /before/i,
+      }),
+      "07062022"
+    );
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/releasedate \| between 06\/06\/2022 and 06\/07\/2022/i);
+  });
+
+  it("apply date filter with valid start", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/releasedate/i).click();
+    });
+
+    userEvent.type(
+      screen.getByRole("textbox", {
+        name: /before/i,
+      }),
+      "07062022"
+    );
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/releasedate \| before 06\/07\/2022/i);
   });
 
   it("apply tags", () => {
@@ -302,21 +368,26 @@ describe("Filter test", () => {
     act(() => {
       screen.getByRole("button", { name: /filters/i }).click();
     });
-    
+
     act(() => {
       screen.getByText(/tags/i).click();
     });
-    
-    act(() => {
-      screen.getByRole('combobox', {
-        name: /tags/i
-      }).click()
-    })
 
-    userEvent.type(screen.getByRole('combobox', {
-      name: /tags/i
-    }), "2d{arrowdown}{enter}");
-    
+    act(() => {
+      screen
+        .getByRole("combobox", {
+          name: /tags/i,
+        })
+        .click();
+    });
+
+    userEvent.type(
+      screen.getByRole("combobox", {
+        name: /tags/i,
+      }),
+      "2d{arrowdown}{enter}"
+    );
+
     act(() => {
       screen
         .getByRole("button", {
@@ -324,7 +395,6 @@ describe("Filter test", () => {
         })
         .click();
     });
- 
   });
 
   it("apply achievements filter without choosing an option", () => {
