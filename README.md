@@ -129,30 +129,47 @@ Vi valgte bla bla bla kombinere oppgave 2 og 3. Forbedre testing og perfeksjoner
 * Display the games in a grid
 * Dark mode for sustainability
 * Comments in the code
-* Not show when there are no reviews
 * Disable sort button
+* Not show review when no reviews
 * Not show rating when no ratings
 * Problem with sorting on price
 * Improve size of tags box
 
-### Hva har vi fokusert på? 
+### Hvordan har vi gått frem for å forbedre disse?
 
 #### Frontend
+Mye av forbedringsforslagene kom naturligvis på frontend, da det er det man selv møter som tilbakemelder 
+på prosjektet og det er lettest å finne forbedringspotensiale i. 
+
+Reset page knapp
+Auto add filter
+Displaying games in a grid
+Disable sort button
+Not show review when no reviews
+Not show rating when no ratings
+Problem with sorting on price
+Size of tags box
 
 #### Backend
+Vi fikk ikke mye kommentarer på backenden vår, men vi har forbedret testingen i backend og har også måttet endre noe der så frontend skal fungere som vi vil. 
 
 #### Testing
 Forbedret og utviklet. Diskuteres i neste avsnitt.
+Snapshot testing
 
 #### Web tilgjengelighet
+En tilbakemelding vi fikk på muligheten for å tabbe gjennom siden var at man ikke kunne se hvilket spill man var fokusert på når man tabbet gjennom spillene. Dette løste vi ved å endre fargen på spillkortene på onFocus til en gråfarge som fungerte fint for både vanlig og darkmode. Basert på tilbakemeldinger har vi også valgt å forbedre kommenteringen vår i koden. Dette gjør koden mer tilgjengelig for alle, og man kan også lettere forstå hvorfor den er bygget opp som den er. 
 
 #### Bærekraftig webutvikling
-
+Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen blitt nødt til å endre enkelte tekstfarger så alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også masse strøm da hvitt krever mest strøm. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det hensiktsmessig å implementere det.  
 
 ## Testing i prosjekt 4
 
 ### Dekningsgrad
+Vi tester nå alt i applikasjonen, fra stores, knapper og komponenter. 
 
 ### Komponenttesting
 
 ### Snapshottesting
+
+### Endpoint testing
