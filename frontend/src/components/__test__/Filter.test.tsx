@@ -244,6 +244,58 @@ describe("Filter test", () => {
     });
   });
 
+  it("apply price filter", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/price/i).click();
+    });
+
+    act(() => {
+      screen.getByTestId('slider').click()
+    });
+
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+  });
+
+  it("apply date filter with invalid date", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/releasedate/i).click();
+    });
+
+    userEvent.type(screen.getByRole('textbox', {
+      name: /after/i
+    }), "23")
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/releasedate \| after invalid date/i)
+  });
+
   it("apply tags", () => {
     render(<Filter />);
 
@@ -339,5 +391,49 @@ describe("Filter test", () => {
     });
 
     screen.getByText(/please select a tag to filter/i);
+  });
+
+  it("apply price filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/price/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/no reason to filter between the min and max/i);
+  });
+
+  it("apply date filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/releasedate/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/please select valid dates./i);
   });
 });
