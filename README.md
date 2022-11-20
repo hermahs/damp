@@ -118,7 +118,7 @@ Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. 
 
 
 ## Oppgaven videre fra Prosjekt 3 
-Vi valgte bla bla bla
+Vi valgte bla bla bla kombinere oppgave 2 og 3. Forbedre testing og perfeksjonere prosjekt. 
 
 ## Tilbakemeldingene vi har fått
 
@@ -137,14 +137,22 @@ Vi valgte bla bla bla
 
 ### Hva har vi fokusert på? 
 
-## Hvordan har vi forbedret oss i forhold til kravene?
+#### Frontend
 
-### Frontend
+#### Backend
 
-### Backend
+#### Testing
+Forbedret og utviklet. Diskuteres i neste avsnitt.
 
-### Testing
+#### Web tilgjengelighet
 
-### Web tilgjengelighet
+#### Bærekraftig webutvikling
 
-### Bærekraftig webutvikling
+
+## Testing i prosjekt 4
+
+### Dekningsgrad
+
+### Komponenttesting
+
+### Snapshottesting
