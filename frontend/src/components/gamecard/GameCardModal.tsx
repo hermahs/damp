@@ -68,8 +68,8 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
     };
 
     const showPrice = (price: number) => {
-        if (price === null || price === undefined) {
-            return "unknown"
+        if (price === null || price === undefined || price === 0) {
+            return "Free"
         }
         return "$" + price
     };
