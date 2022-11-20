@@ -42,11 +42,11 @@ export const Sort = observer(() => {
 
     return (
         <Stack gap={1} direction='row' sx={{my: 2, width: '90%'}}>
-            <FormControl>
-                <InputLabel id="typeLabel">Type</InputLabel>
-                <Select id="typeSelect" labelId="typeLabel" value={store.dataStore.sort.type} label="type" onChange={handleChangeType}>
-                    <MenuItem value={SortType.NONE}>None</MenuItem>
-                    <MenuItem value={SortType.NAME}>Name</MenuItem>
+            <FormControl data-testid={"type-dropdown"}>
+                <InputLabel data-testid={"5134"} id="typeLabel">Type</InputLabel>
+                <Select data-testid={"1942"} id="typeSelect" labelId="typeLabel" value={store.dataStore.sort.type} label="type" onChange={handleChangeType}>
+                    <MenuItem data-testid={"none-dropdown"} value={SortType.NONE}>None</MenuItem>
+                    <MenuItem data-testid={"name-dropdown"} value={SortType.NAME}>Name</MenuItem>
                     <MenuItem value={SortType.RELEASEDATE}>Release date</MenuItem>
                     <MenuItem value={SortType.PRICE}>Price</MenuItem>
                 </Select>
@@ -58,7 +58,7 @@ export const Sort = observer(() => {
                     <MenuItem value={"descending"}>Descending</MenuItem>
                 </Select>
             </FormControl>
-            <Button disabled={sortButtonDisabled} variant='outlined' sx={{backgroundColor: "#BEBEBE"}} onClick={applySort}>Sort</Button>
+            <Button data-testid={"sort-button"} disabled={sortButtonDisabled} variant='outlined' sx={{backgroundColor: "#BEBEBE"}} onClick={applySort}>Sort</Button>
         </Stack>
     )
 })

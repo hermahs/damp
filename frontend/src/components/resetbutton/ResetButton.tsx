@@ -21,7 +21,7 @@ export const ResetButton = observer(() => {
 
     return (
         <div>
-        {showButton && <Button variant='outlined' color='error' sx={{width: "10%", marginTop: 3, borderRadius: 3, height: '50%'}} onClick={handleReset}>
+        {showButton && <Button data-testid={"reset-button"} variant='outlined' color='error' sx={{width: "10%", marginTop: 3, borderRadius: 3, height: '50%'}} onClick={handleReset}>
             Reset
         </Button>}
         </div>

@@ -174,6 +174,33 @@ describe("Searchbar test", () => {
     ).toBeInTheDocument();
   });
 
+  it("help icon removes text on click", () => {
+    render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Search />
+      </MockedProvider>
+    );
+
+    fireEvent.mouseOver(screen.getByTestId("HelpOutlineIcon"))
+    fireEvent.mouseDown(screen.getByTestId("HelpOutlineIcon"))
+  })
+
+  it("reset search", () => {
+    render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Search />
+      </MockedProvider>
+    );
+
+    screen.getByLabelText(/search/i);
+    userEvent.type(screen.getByLabelText(/search/i), "typing");
+
+    fireEvent.mouseDown(screen.getByTestId('CloseIcon'))
+
+    expect(screen.queryByText("typing")).not.toBeInTheDocument();
+
+  })
+
   it("gives no games found with bad search", async () => {
     render(
       <MockedProvider mocks={mocks} addTypename={false}>

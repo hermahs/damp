@@ -30,6 +30,16 @@ describe("test header component", () => {
     screen.getByText(/about/i);
   });
 
+  it("test reload of page", () => {
+    render(<Header darkMode={false} setDarkMode={() => {}} />);
+
+    act(() => {
+      screen.getByText(/damp/i).click()
+    })
+
+    screen.getByText(/damp/i)
+  });
+
   it("about loads correctly", async () => {
     render(<Header darkMode={false} setDarkMode={() => {}} />);
     act(() => {
