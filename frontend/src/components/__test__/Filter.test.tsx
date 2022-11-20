@@ -6,8 +6,8 @@ import { defaultContext, store } from "../../store";
 import renderer from "react-test-renderer";
 
 beforeEach(() => {
-  store.resetStores()
-})
+  store.resetStores();
+});
 
 afterEach(cleanup);
 
@@ -234,6 +234,50 @@ describe("Filter test", () => {
       expect(filter.name).toMatch(/genre/i);
       expect(filter.data?.visualData).toMatch(/action/i);
     });
+  });
+
+  it("apply achievements filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/achievements/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/please select a value to filter/i);
+  });
+
+  it("apply genre filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/genre/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/please select genre(s) to filter/i);
   });
 });
 
