@@ -13,7 +13,7 @@ import "@testing-library/jest-dom";
 import { GameCards } from "../gamecard";
 import { Provider } from "mobx-react";
 import { store } from "../../store";
-import renderer from "react-test-renderer";
+import renderer, { act } from "react-test-renderer";
 
 const mocks = [
   {
@@ -156,10 +156,15 @@ describe("Searchbar test", () => {
     );
 
     screen.getByLabelText(/search/i);
-    userEvent.type(screen.getByLabelText(/search/i), "trackmania");
-    expect(screen.getByDisplayValue("trackmania")).toBeInTheDocument();
-  });
+    userEvent.type(screen.getByLabelText(/search/i), "t");
 
+    expect(store.dataStore.searchString).toBe("t");
+    expect(screen.getByDisplayValue("t")).toBeInTheDocument();
+
+    userEvent.type(screen.getByLabelText(/search/i), "{backspace}");
+    expect(store.dataStore.searchString).toBe("");
+  });
+  
   it("help icon works as intended", () => {
     render(
       <MockedProvider mocks={mocks} addTypename={false}>
@@ -169,9 +174,12 @@ describe("Searchbar test", () => {
 
     screen.getByTestId("HelpOutlineIcon");
     userEvent.hover(screen.getByTestId("HelpOutlineIcon"));
+
     expect(
       screen.getByText("You can search by game name, developer, or publisher")
     ).toBeInTheDocument();
+
+    userEvent.unhover(screen.getByTestId("HelpOutlineIcon"));
   });
 
   it("help icon removes text on click", () => {
@@ -180,9 +188,9 @@ describe("Searchbar test", () => {
         <Search />
       </MockedProvider>
     );
-
-    fireEvent.mouseOver(screen.getByTestId("HelpOutlineIcon"))
-    fireEvent.mouseDown(screen.getByTestId("HelpOutlineIcon"))
+    
+    userEvent.click(screen.getByTestId("HelpOutlineIcon"));
+    
   })
 
   it("reset search", () => {
@@ -195,10 +203,12 @@ describe("Searchbar test", () => {
     screen.getByLabelText(/search/i);
     userEvent.type(screen.getByLabelText(/search/i), "typing");
 
-    fireEvent.mouseDown(screen.getByTestId('CloseIcon'))
+    act(() => {
+      screen.getByTestId("reset-search").click();
+    });
 
     expect(screen.queryByText("typing")).not.toBeInTheDocument();
-
+    expect(store.dataStore.searchString).toBe("");
   })
 
   it("gives no games found with bad search", async () => {
@@ -217,8 +227,9 @@ describe("Searchbar test", () => {
     expect(field).toBeInTheDocument();
     fireEvent.change(field, { target: { value: "trackmania" } });
     expect(screen.getByDisplayValue("trackmania")).toBeInTheDocument();
-  });
+  }); 
 });
+
 
 describe("Searchbar snapshot test", () => {
   it("render searcherbar", () => {
@@ -230,5 +241,5 @@ describe("Searchbar snapshot test", () => {
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
-  });
-});
+  }); 
+}); 
