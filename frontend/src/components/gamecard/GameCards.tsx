@@ -38,14 +38,14 @@ export const GameCards = observer(() => {
 
             {store.dataStore.data.map((game: Game) => 
                 <Grid item key={game.appId} md={4} sm={6} xs={10}>
-                    <GameCardDisplay game={game} onClick={() => store.modalStore.selectGame(game.appId)}/>
+                    <GameCardDisplay data-testid="game-card" game={game} onClick={() => store.modalStore.selectGame(game.appId)}/>
                 </Grid>
                 )
             }
             
             <GameCardModal open={store.modalStore.showModal} onClose={handleClose} />
             {store.dataStore.loading && <Box sx={{mx: 'auto', width: 'fit-content'}}><CircularProgress sx={{mx: 'auto'}}/></Box>}
-            <BackToTopButton />
+            <BackToTopButton data-testid="back-to-top-button"/>
         </Grid>
     );
 });
