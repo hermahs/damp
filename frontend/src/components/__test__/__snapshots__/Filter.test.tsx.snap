@@ -87,6 +87,33 @@ exports[`Filter snapshot test render filter component 1`] = `
               >
                 <div
                   aria-haspopup="true"
+                  className="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-clickableColorDefault MuiChip-filledDefault css-10m89vb-MuiButtonBase-root-MuiChip-root"
+                  data-testid="Genre"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onContextMenu={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <span
+                    className="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                  >
+                    Genre
+                  </span>
+                </div>
+                <div
+                  aria-haspopup="true"
                   className="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-clickableColorDefault MuiChip-filledDefault css-1uf3vez-MuiButtonBase-root-MuiChip-root"
                   data-testid="Price"
                   onBlur={[Function]}
@@ -141,33 +168,6 @@ exports[`Filter snapshot test render filter component 1`] = `
                 </div>
                 <div
                   aria-haspopup="true"
-                  className="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-clickableColorDefault MuiChip-filledDefault css-1y9da21-MuiButtonBase-root-MuiChip-root"
-                  data-testid="Tags"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onContextMenu={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <span
-                    className="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Tags
-                  </span>
-                </div>
-                <div
-                  aria-haspopup="true"
                   className="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-clickableColorDefault MuiChip-filledDefault css-13pma9r-MuiButtonBase-root-MuiChip-root"
                   data-testid="Achievements"
                   onBlur={[Function]}
@@ -195,8 +195,8 @@ exports[`Filter snapshot test render filter component 1`] = `
                 </div>
                 <div
                   aria-haspopup="true"
-                  className="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-clickableColorDefault MuiChip-filledDefault css-10m89vb-MuiButtonBase-root-MuiChip-root"
-                  data-testid="Genre"
+                  className="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-clickableColorDefault MuiChip-filledDefault css-1y9da21-MuiButtonBase-root-MuiChip-root"
+                  data-testid="Tags"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -217,7 +217,7 @@ exports[`Filter snapshot test render filter component 1`] = `
                   <span
                     className="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Genre
+                    Tags
                   </span>
                 </div>
               </div>

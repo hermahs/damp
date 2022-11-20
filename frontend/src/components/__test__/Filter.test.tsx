@@ -12,6 +12,13 @@ beforeEach(() => {
 
 afterEach(cleanup);
 
+describe("Filter snapshot test", () => {
+  it("render filter component", () => {
+    const tree = renderer.create(<Filter />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
+
 describe("Filter test", () => {
   it("renders without crashing", () => {
     render(<Filter />);
@@ -237,7 +244,7 @@ describe("Filter test", () => {
     });
   });
 
-  it.only("apply tags", () => {
+  it("apply tags", () => {
     render(<Filter />);
 
     act(() => {
@@ -332,12 +339,5 @@ describe("Filter test", () => {
     });
 
     screen.getByText(/please select a tag to filter/i);
-  });
-});
-
-describe("Filter snapshot test", () => {
-  it("render filter component", () => {
-    const tree = renderer.create(<Filter />).toJSON();
-    expect(tree).toMatchSnapshot();
   });
 });
