@@ -43,9 +43,10 @@ const genreColorMap = {
   "Web Publishing": "#fde725",
 };
 
-export const GameCardDisplay = observer(
-  (props: { game: Game; onClick: () => void }) => {
-    const showRating = (text: string) => {
+export const GameCardDisplay = observer((props: { game: Game; onClick: () => void }) => {
+    
+  
+  const showRating = (text: string) => {
       if (text === "" || text === null) {
         return "";
       }
@@ -60,7 +61,7 @@ export const GameCardDisplay = observer(
     };
 
     const showImage = (url: string) => {
-      if (url === null) {
+      if (url === null || url === "") {
         return (
           <CardMedia
             alt="complex"

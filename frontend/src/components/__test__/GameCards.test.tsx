@@ -1,10 +1,11 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup, getByAltText } from "@testing-library/react";
 import { GameCards } from "../gamecard";
 import { defaultContext, store } from "../../store";
 import { MockedProvider } from "@apollo/client/testing";
 import { Provider } from "mobx-react";
 import { Game, Comment } from "../../types";
 import renderer from "react-test-renderer";
+import userEvent from "@testing-library/user-event";
 
 const comment: Comment = {
   name: "the watcher",
@@ -19,7 +20,7 @@ const game1: Game = {
   release_date: "May 12, 1962",
   publisher: ["Gutta boys"],
   genre: ["Action"],
-  all_reviews: "",
+  all_reviews: "Very Positive,(3,547),- 84% of the 3,547 user reviews for this game are positive.",
   developer: "Johan",
   game_description: "Lets get cooking, awesome game",
   description: "",
@@ -37,7 +38,7 @@ const game2: Game = {
   release_date: "September 17, 1959",
   publisher: ["Kara fra Sahra"],
   genre: ["Strategy"],
-  all_reviews: "",
+  all_reviews: "7 user reviews,- Need more user reviews to generate a score",
   developer: "Han der",
   game_description: "Lets get speedy",
   description: "",
@@ -51,7 +52,7 @@ const game2: Game = {
 const game3: Game = {
   name: "Elden Ring",
   appId: 379722,
-  imagePath: "https://cdn.akamai.steamstatic.com/steam/apps/379720/header.jpg",
+  imagePath: "",
   release_date: "December 6, 1999",
   publisher: ["Børge"],
   genre: ["RPG"],
@@ -82,15 +83,59 @@ describe("GameCards test", () => {
     );
 
     screen.getByText(/overcooked/i);
-    screen.getByText(/published: may 12, 1962/i);
-    screen.getByText(/gutta boys/i);
-    screen.getByText(/genre: action/i);
+    screen.getByText(/May 12, 1962/i);
+    screen.getByText(/Action/i);
+    screen.getByText(/84%/i);
 
     screen.getByText(/elden ring/i);
     screen.getByText(/trackmania/i);
   });
-});
 
+
+  it("game card modal test", () => {
+    render(
+      <Provider {...defaultContext}>
+        <MockedProvider addTypename={false}>
+          <GameCards />
+        </MockedProvider>
+      </Provider>
+    );
+
+    userEvent.click(screen.getByText(/overcooked/i));
+    //screen.getByText(/description/i);
+  });  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+/*
 describe("Filter snapshot test", () => {
   it("render filter component", () => {
     const tree = renderer
@@ -104,4 +149,4 @@ describe("Filter snapshot test", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-});
+}); */
