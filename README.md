@@ -24,7 +24,6 @@ til oppgave 4 har vi valgt å kombinere oppgave b og c. Vi ønsker også å perf
 
 * Reset page
 * Snapshot testing
-* Automatically add filter
 * Tabbing through the games
 * Display the games in a grid
 * Dark mode for sustainability
@@ -41,27 +40,21 @@ til oppgave 4 har vi valgt å kombinere oppgave b og c. Vi ønsker også å perf
 Mye av forbedringsforslagene kom naturligvis på frontend, da det er det man selv møter som tilbakemelder 
 på prosjektet og det er lettest å finne forbedringspotensiale i. 
 
-Reset page knapp
-Auto add filter
-Displaying games in a grid
-Disable sort button
-Not show review when no reviews
-Not show rating when no ratings
-Problem with sorting on price
-Size of tags box
+Vi startet med å sette opp issues for alle disse små tiltakene vi kunne gjøre for å forbedre applikasjonen. Av enkle små-fix har vi gjort følgende: Vi har lagt til en knapp som tilbakestiller alle filtre og sorteringer man har valgt, vi har deaktivert sorteringsknappen når ingen krav er valgt og vi har endret størrelsen på tags-boksen så man lettere kan se alle tagsene man har å velge mellom.
+
+Av mer krevende inngrep har vi innført funksjonalitet for å vise tre spill i bredden i grid-format når skjermen er bred nok. Vi har også fikset problematikk rundt at applikasjonen viste ratings og reviews selv om ingen var registrert. Vi hadde også et problem med at om man sorterte på pris, ascending, kom de spillene som manglet pris opp først. Dette er jo ikke det man leter etter om man sorterer for billigste spill, og vi har fikset dette problemet. 
 
 #### Backend
 Vi fikk ikke mye kommentarer på backenden vår, men vi har forbedret testingen i backend og har også måttet endre noe der så frontend skal fungere som vi vil. 
 
 #### Testing
-Forbedret og utviklet. Diskuteres i neste avsnitt.
-Snapshot testing
+Testingen av applikasjonen har blitt forbedret. Dette diskuteres i avsnittet "Testing i prosjekt 4" som kommer under.
 
 #### Web tilgjengelighet
 En tilbakemelding vi fikk på muligheten for å tabbe gjennom siden var at man ikke kunne se hvilket spill man var fokusert på når man tabbet gjennom spillene. Dette løste vi ved å endre fargen på spillkortene på onFocus til en gråfarge som fungerte fint for både vanlig og darkmode. Basert på tilbakemeldinger har vi også valgt å forbedre kommenteringen vår i koden. Dette gjør koden mer tilgjengelig for alle, og man kan også lettere forstå hvorfor den er bygget opp som den er. 
 
 #### Bærekraftig webutvikling
-Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen blitt nødt til å endre enkelte tekstfarger så alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også masse strøm da hvitt krever mest strøm. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det hensiktsmessig å implementere det.  
+Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har en enkel knapp i headeren til å bytte tema, som også forteller deg hva slags tema du bruker nå. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen blitt nødt til å endre enkelte tekstfarger så alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også strøm da hvitt krever mest strøm. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det hensiktsmessig å implementere det.  
 
 ## Testing i prosjekt 4
 
