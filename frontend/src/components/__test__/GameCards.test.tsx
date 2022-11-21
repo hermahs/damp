@@ -56,17 +56,22 @@ describe("GameCards test", () => {
 
 
   it("game card modal test", () => {
+    expect(store.modalStore.game).toBeUndefined();
+    store.modalStore.selectGame(games[0].appId)
     render(
       <Provider {...defaultContext}>
         <MockedProvider addTypename={false}> 
-          <GameCards />
+          <GameCardModal open={true} onClose={() => {}} />
         </MockedProvider>
       </Provider>
     );
 
     expect(store.modalStore.game).toBeUndefined();
     store.modalStore.selectGame(games[0].appId)
-    //screen.getByText(/mamamsds/i);
+
+
+    console.log(store.modalStore.game);
+    screen.getByText(/mamamsds/i);
     expect(store.modalStore.showModal).toEqual(true);
     expect(store.modalStore.game).toEqual(games[0]);
     
