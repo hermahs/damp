@@ -18,6 +18,7 @@ Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. 
 
 
 ## Oppgaven vi valgte 
+
 Til prosjekt 4 har vi valgt å kombinere to av de mulige oppgavene. Vi valgte å forbedredre og systematisk enhetsteste backend og klient fra prosjekt 3 (oppgave b) og vi valgte å perfeksjonere klient og backend fra prosjekt 3 (oppgave c). Vi har tatt utgangspunkt i å løse all kritikk vi fikk i tilbakemeldingene fra prosjekt 3, samt å sikte oss inn på en testdekningsgrad av applikasjonen på 100%. 
 
 ## Tilbakemeldinger
@@ -36,29 +37,36 @@ Til prosjekt 4 har vi valgt å kombinere to av de mulige oppgavene. Vi valgte å
 ### Hvordan har vi gått frem for å forbedre disse?
 
 #### Frontend
-Mye av forbedringsforslagene kom naturligvis på frontend, da det er det man selv møter som tilbakemelder 
-på prosjektet og det er lettest å finne forbedringspotensiale i. 
 
-Vi startet med å sette opp issues for alle disse små tiltakene vi kunne gjøre for å forbedre applikasjonen. Av enkle små-fix har vi gjort følgende: Vi har lagt til en knapp som tilbakestiller alle filtre og sorteringer man har valgt, vi har deaktivert sorteringsknappen når ingen krav er valgt og vi har endret størrelsen på tags-boksen så man lettere kan se alle tagsene man har å velge mellom.
+Vi startet med å sette opp issues for alle tilbakemeldingene vi fikk, for å kunne forbedre applikasjonen fra et burkerperspektiv. Av enkle små-fix har vi gjort følgende: Vi har lagt til en knapp som tilbakestiller alle filtre og sorteringer man har valgt, vi har deaktivert sorteringsknappen når ingen krav er valgt og vi har endret størrelsen på tags-boksen så man lettere kan se alle tagsene man har å velge mellom.
 
-Av mer krevende inngrep har vi innført funksjonalitet for å vise tre spill i bredden i grid-format når skjermen er bred nok. Vi har også fikset problematikk rundt at applikasjonen viste ratings og reviews selv om ingen var registrert. Vi hadde også et problem med at om man sorterte på pris, ascending, kom de spillene som manglet pris opp først. Dette er jo ikke det man leter etter om man sorterer for billigste spill, og vi har fikset dette problemet. 
+Av mer krevende inngrep har vi innført funksjonalitet for å vise tre spill i bredden i grid-format når skjermen er bred nok. Selve spillkortet har også fått et nytt design som er mer estetisk og viser mer relevant informasjon. Vi har også fikset problematikk rundt at applikasjonen viste ratings og reviews selv om denne informasjonen manglet fra databasen. Vi hadde også et problem med at om man sorterte på pris, ascending, kom de spillene som manglet pris opp først. Dette er jo ikke det man leter etter om man sorterer for billigste spill, og vi har fikset dette problemet. 
 
 #### Backend
+
 Vi fikk ikke mye kommentarer på backenden vår, men vi har forbedret testingen i backend og har også måttet endre noe der så frontend skal fungere som vi vil. 
 
 #### Testing
+
 Testingen av applikasjonen har blitt forbedret. Dette diskuteres i avsnittet "Testing i prosjekt 4" som kommer under.
 
 #### Web tilgjengelighet
+
 En tilbakemelding vi fikk på muligheten for å tabbe gjennom siden var at man ikke kunne se hvilket spill man var fokusert på når man tabbet gjennom spillene. Dette løste vi ved å endre fargen på spillkortene på onFocus til en gråfarge som fungerte fint for både vanlig og darkmode. Basert på tilbakemeldinger har vi også valgt å forbedre kommenteringen vår i koden. Dette gjør koden mer tilgjengelig for alle, og man kan også lettere forstå hvorfor den er bygget opp som den er. 
 
 #### Bærekraftig webutvikling
-Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har en enkel knapp i headeren til å bytte tema, som også forteller deg hva slags tema du bruker nå. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen blitt nødt til å endre enkelte tekstfarger så alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også strøm da hvitt krever mest strøm. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det hensiktsmessig å implementere det.  
+
+Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har en enkel knapp i headeren til å bytte tema, som også forteller deg hva slags tema du bruker nå. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen vært nødt til å endre enkelte tekstfarger slik at alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også strøm. Vi valgte også å benytte os av localStorage til å huske brukerens valg, slik at valget ble persistent. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det hensiktsmessig å implementere det.
+
+At vi nå viser tre spill i bredden er også mer bærekraftig, da vi benytter mer av plassen til å vise relevant innhold.
 
 ## Testing i prosjekt 4
 
 ### Dekningsgrad
-Vi tester nå alt i applikasjonen, fra stores, knapper og komponenter. 
+
+[![coverage report](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/badges/main/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/-/commits/main) 
+
+Vi tester nå alt i applikasjonen som klarer å testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi utrolig nærme 100%. Vi er klar over at dette ikke reflekterer at appen er perfekt dekket av tester, men vi har lært mange nye måter å teste funksjonalitet på som vi tidligere ikke har kunnet. Dette har også gjort at vi har vært nødt til å gå grundigere til verks og testet så godt som alt av edge-cases.
 
 ### Pipeline added 
 
@@ -66,4 +74,8 @@ Vi tester nå alt i applikasjonen, fra stores, knapper og komponenter.
 
 ### Snapshottesting
 
+Vi er kjent med at det er mye debatt i utviklingsmiljøet om nyttigheten av snapshottesting. I et virkelig prosjekt ville vi ikke nødvendigvis benyttet oss av dette. Vi har valgt i dette prosjektet å ta det med for å lære om hvordan man utfører det og for å vise kunnskap om utviklingen av snapshottesting. 
+
 ### Endpoint testing
+
+
