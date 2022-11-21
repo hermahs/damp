@@ -126,8 +126,9 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
             onClose={props.onClose} 
             aria-labelledby="game-modal"
             aria-describedby="modal for showing more info about a game."
+            sx = {{ bgcolor: 'rgba(0, 0, 0, 0.8)' }}
         >
-            <Card sx={{...styleCard}} style={{maxWidth: "650px"}}>
+            <Card sx={{...styleCard}} style={{maxWidth: "650px", height: '90%' }}>
                     <ButtonBase sx={{ width: "100%", backgroundColor: "black"}}>
                         {showImage(store.modalStore.game.imagePath)}
                     </ButtonBase> 
