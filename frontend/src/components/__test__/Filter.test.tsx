@@ -104,6 +104,40 @@ describe("Filter test", () => {
     expect(screen.getByRole("checkbox", { name: /action/i })).toBeChecked();
   });
 
+  it("test hover functions on filter buttons", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    userEvent.hover(screen.getByRole('button', {
+      name: /genre/i,
+      hidden: true
+    }))
+
+    screen.getByText(/the genre of the game/i)
+
+    userEvent.hover(screen.getByRole('button', {
+      name: /price/i,
+      hidden: true
+    }))
+
+    screen.getByText(/the price of the game/i)
+
+    userEvent.hover(screen.getByRole('button', {
+      name: /tags/i,
+      hidden: true
+    }))
+
+    screen.getByText(/the tags of the game/i)
+
+    userEvent.click(screen.getByRole('button', {
+      name: /tags/i,
+      hidden: true
+    }))
+  });
+
   it("render filterbuttons correctly", () => {
     render(<Filter />);
 
