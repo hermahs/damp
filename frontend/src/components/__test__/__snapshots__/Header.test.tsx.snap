@@ -35,7 +35,7 @@ exports[`header snapshot tests basic snapshot test 1`] = `
         tabIndex={0}
         type="button"
       >
-        DarkMode
+        Light
       </button>
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit css-1y942vo-MuiButtonBase-root-MuiButton-root"
