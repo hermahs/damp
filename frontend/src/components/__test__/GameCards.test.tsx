@@ -42,6 +42,8 @@ describe("GameCards test", () => {
     screen.getByText(/Mamma mia/i);
     
     screen.queryByTestId("back-to-top-button");
+
+    fireEvent.click(screen.getByText(/overcooked/i));
   });
 
 
