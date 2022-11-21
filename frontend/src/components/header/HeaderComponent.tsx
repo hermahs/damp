@@ -39,7 +39,7 @@ export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) =>
             localStorage.setItem("dark-mode", JSON.stringify(!props.darkMode))
             props.setDarkMode(!props.darkMode)
             }}>
-            DarkMode
+            {props.darkMode ? "LightMode" : "DarkMode"}
           </Button>
           <Button color="inherit" onClick={handleOpen}>
             ABOUT
