@@ -61,6 +61,8 @@ Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer b�
 ### Dekningsgrad
 Vi tester nå alt i applikasjonen, fra stores, knapper og komponenter. 
 
+### Pipeline added 
+
 ### Komponenttesting
 
 ### Snapshottesting
