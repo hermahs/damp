@@ -7,6 +7,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../graphQL';
 import { useStores } from '../../hooks';
 import { observer } from 'mobx-react';
+import { color } from '@rneui/base';
 
 const Img = styled('img')({
     margin: 'auto',

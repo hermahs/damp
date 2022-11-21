@@ -18,13 +18,12 @@ function App() {
       setDarkMode(true)
     }
   }, [])
-  
-
+  // main: "#283044",
   const theme = responsiveFontSizes(createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
       primary: {
-        main: "#283044",
+        main: "#0288d1"
       },
       secondary: {
         main: "#EB5160",
