@@ -17,22 +17,21 @@ Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. 
     3. kjør cypress -> `cd frontend && npm run cypress`
 
 
-## Oppgaven videre fra Prosjekt 3 
-til oppgave 4 har vi valgt å kombinere oppgave b og c. Vi ønsker også å perfeksjonere frontend og backend fra prosjekt 3, og kombinere med å virkelig forbedre testingen av både frontend og backend. Vi har tatt utgangspunkt i å løse all kritikk vi fikk i tilbakemeldingene og sikter på en 100% testdekningsgrad av applikasjonen. 
+## Oppgaven vi valgte 
+Til prosjekt 4 har vi valgt å kombinere to av de mulige oppgavene. Vi valgte å forbedredre og systematisk enhetsteste backend og klient fra prosjekt 3 (oppgave b) og vi valgte å perfeksjonere klient og backend fra prosjekt 3 (oppgave c). Vi har tatt utgangspunkt i å løse all kritikk vi fikk i tilbakemeldingene fra prosjekt 3, samt å sikte oss inn på en testdekningsgrad av applikasjonen på 100%. 
 
 ## Tilbakemeldinger
 
-* Reset page
-* Snapshot testing
-* Tabbing through the games
-* Display the games in a grid
-* Dark mode for sustainability
-* Comments in the code
-* Disable sort button
-* Not show review when no reviews
-* Not show rating when no ratings
-* Problem with sorting on price
-* Improve size of tags box
+* Reset page - mulighet til å tilbakestille nettsiden uten å laste inn siden på nytt
+* Snapshot testing - benytte oss av snapshot tester
+* Tabbing through the games - mulighet til å navigere hele nettsiden med tastaturet
+* Display the games in a grid - benytte ubrukt plass på siden til å vise forhåndsvisning av spill
+* Dark mode for sustainability - mulighet for å velge darkmode
+* Comments in the code - mer kommentarer i koden for å forklare komplisert funksjonalitet
+* Disable sort button - ikke mulig å klikke på sorter-knappen når ingen parametre er valgt
+* Dynamic loading of data - ikke vise reviews eller ratings dersom informasjonen mangler i databasen
+* Problem with sorting on price - når man sorterer på pris (lav-høy) så skal man se de billigste spillene først og ikke de som er gratis
+* Improve size of tags box - forstørre listen man velger fra når man velger tags
 
 ### Hvordan har vi gått frem for å forbedre disse?
 
