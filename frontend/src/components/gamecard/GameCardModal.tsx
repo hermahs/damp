@@ -191,7 +191,7 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                                         </Stack>
                                         
                                         <TextField label="comment" placeholder='comment' value={comment} onChange={handleChangeComment} multiline rows={4} error={commentError} required data-testid="comment_textbox"/>
-                                        <Button onClick={handleAddComment}  sx={{ boxShadow: 2, color: "#007c7d"}} data-testid="add_comment">Add comment</Button>
+                                        <Button onClick={handleAddComment}  sx={{ boxShadow: 2}} data-testid="add_comment">Add comment</Button>
                                     </Stack>
                                 </FormControl>
                             </AccordionDetails>
