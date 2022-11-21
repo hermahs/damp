@@ -82,9 +82,8 @@ describe("GameCards test", () => {
     );
 
     screen.getByText(/overcooked/i);
-    screen.getByText(/published: may 12, 1962/i);
-    screen.getByText(/gutta boys/i);
-    screen.getByText(/genre: action/i);
+    screen.getByText(/may 12, 1962/i);
+    screen.getByText(/action/i);
 
     screen.getByText(/elden ring/i);
     screen.getByText(/trackmania/i);

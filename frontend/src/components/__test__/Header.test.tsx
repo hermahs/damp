@@ -26,7 +26,7 @@ describe("test header component", () => {
   it("renders with correct header", () => {
     render(<Header darkMode={false} setDarkMode={() => {}} />);
     screen.getByText(/damp/i);
-    screen.getByText(/darkmode/i);
+    screen.getByText(/light/i);
     screen.getByText(/about/i);
   });
 
@@ -46,7 +46,7 @@ describe("test header component", () => {
       screen.getByText(/about/i).click();
     })
     act(() => {
-      screen.getByText(/darkmode/i).click();
+      screen.getByText(/light/i).click();
     });
     const cont = await waitFor(() => screen.findByText(/how to use damp/i));
 
@@ -66,11 +66,11 @@ describe("test header component", () => {
     render(<TestComponent />);
     screen.getByText(/false/i);
     act(() => {
-      screen.getByText(/darkmode/i).click();
+      screen.getByText(/light/i).click();
     });
     await waitFor(() => screen.findByText(/true/i));
     act(() => {
-      screen.getByText(/darkmode/i).click();
+      screen.getByText(/dark/i).click();
     });
     await waitFor(() => screen.findByText(/false/i));
   });

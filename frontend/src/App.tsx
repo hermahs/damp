@@ -43,13 +43,7 @@ function App() {
               <Box sx={{margin: 2}}>
                 <Search/>
                 <Filter/>
-                <div className='parent'>
-                  <Sort/>
-                  {/**<Button sx={{backgroundColor: "blue", width: "10%", marginTop: 3, borderRadius: 5, height: '50%'}}>
-                      Reset
-                  </Button> */}
-                  <ResetButton/>
-                </div>
+                <Sort/>
               </Box>
               <GameCards/>
             </Container>
