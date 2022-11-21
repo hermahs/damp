@@ -23,6 +23,13 @@ function TestComponent() {
   );
 }
 describe("test header component", () => {
+  beforeAll(() => {
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      value: { reload: jest.fn() },
+    });
+  });
+
   it("renders with correct header", () => {
     render(<Header darkMode={false} setDarkMode={() => {}} />);
     screen.getByText(/damp/i);

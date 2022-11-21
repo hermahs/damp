@@ -4,8 +4,20 @@ import { act } from "react-dom/test-utils";
 import { Provider } from "mobx-react";
 import { defaultContext, store } from "../../store";
 import renderer from "react-test-renderer";
+import userEvent from "@testing-library/user-event";
+
+beforeEach(() => {
+  store.resetStores();
+});
 
 afterEach(cleanup);
+
+describe("Filter snapshot test", () => {
+  it("render filter component", () => {
+    const tree = renderer.create(<Filter />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
 
 describe("Filter test", () => {
   it("renders without crashing", () => {
@@ -231,11 +243,267 @@ describe("Filter test", () => {
       expect(filter.data?.visualData).toMatch(/action/i);
     });
   });
-});
 
-describe("Filter snapshot test", () => {
-  it("render filter component", () => {
-    const tree = renderer.create(<Filter />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it("apply price filter", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/price/i).click();
+    });
+
+    act(() => {
+      screen.getByTestId("slider").click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+  });
+
+  it("apply date filter with invalid date", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/releasedate/i).click();
+    });
+
+    userEvent.type(
+      screen.getByRole("textbox", {
+        name: /after/i,
+      }),
+      "23"
+    );
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/releasedate \| after invalid date/i);
+  });
+
+  it("apply date filter with valid start and end date", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/releasedate/i).click();
+    });
+
+    userEvent.type(
+      screen.getByRole("textbox", {
+        name: /after/i,
+      }),
+      "06062022"
+    );
+
+    userEvent.type(
+      screen.getByRole("textbox", {
+        name: /before/i,
+      }),
+      "07062022"
+    );
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/releasedate \| between 06\/06\/2022 and 06\/07\/2022/i);
+  });
+
+  it("apply date filter with valid start", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/releasedate/i).click();
+    });
+
+    userEvent.type(
+      screen.getByRole("textbox", {
+        name: /before/i,
+      }),
+      "07062022"
+    );
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/releasedate \| before 06\/07\/2022/i);
+  });
+
+  it("apply tags", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/tags/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("combobox", {
+          name: /tags/i,
+        })
+        .click();
+    });
+
+    userEvent.type(
+      screen.getByRole("combobox", {
+        name: /tags/i,
+      }),
+      "2d{arrowdown}{enter}"
+    );
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+  });
+
+  it("apply achievements filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/achievements/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/please select a value to filter/i);
+  });
+
+  it("apply genre filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/genre/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/please select genre\(s\) to filter/i);
+  });
+
+  it("apply tags filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/tags/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/please select a tag to filter/i);
+  });
+
+  it("apply price filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/price/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/no reason to filter between the min and max/i);
+  });
+
+  it("apply date filter without choosing an option", () => {
+    render(<Filter />);
+
+    act(() => {
+      screen.getByRole("button", { name: /filters/i }).click();
+    });
+
+    act(() => {
+      screen.getByText(/releasedate/i).click();
+    });
+
+    act(() => {
+      screen
+        .getByRole("button", {
+          name: /add filter/i,
+        })
+        .click();
+    });
+
+    screen.getByText(/please select valid dates./i);
   });
 });
