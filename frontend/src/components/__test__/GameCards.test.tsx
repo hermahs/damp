@@ -17,13 +17,18 @@ const comment: Comment = {
   comment: "i recommend this game",
 };
 
-for (let i = 0; i < 16; i++) {
-  store.dataStore.data.push(games[i]);
-}
+
 
 window.scrollTo = jest.fn();
 
 afterEach(cleanup);
+
+beforeEach(() => {
+  store.resetStores()
+  for (let i = 0; i < 16; i++) {
+    store.dataStore.data.push(games[i]);
+  }
+})
 
 describe("GameCards test", () => {
 
@@ -83,11 +88,6 @@ describe("GameCards test", () => {
     screen.getByText(/the watcher/i);
     screen.getByText(/i recommend this game/i);
   });  
-
-
-
-
-
 
   it("back to top button", async () => {
     render(<BackToTopButton />);
