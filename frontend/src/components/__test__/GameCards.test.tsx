@@ -8,6 +8,7 @@ import renderer, { act } from "react-test-renderer";
 import userEvent from "@testing-library/user-event";
 import { games } from "./testData/Games"
 import { BackToTopButton } from "../gamecard/BackToTopButton";
+import { CommentView } from "../gamecard/Comment";
 
 const comment: Comment = {
   name: "the watcher",
@@ -41,7 +42,6 @@ describe("GameCards test", () => {
     screen.getByText(/Mamma mia/i);
     
     screen.queryByTestId("back-to-top-button");
-
   });
 
 
@@ -56,6 +56,18 @@ describe("GameCards test", () => {
 
     
   });  
+
+
+  it("comment view test", () => {
+    render(<CommentView name={comment.name} rating={comment.rating} comment={comment.comment} />);
+    screen.getByText(/the watcher/i);
+    screen.getByText(/i recommend this game/i);
+  });  
+
+
+
+
+
 
   it("back to top button", async () => {
     render(<BackToTopButton />);
