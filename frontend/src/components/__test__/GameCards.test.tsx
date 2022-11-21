@@ -9,6 +9,7 @@ import userEvent from "@testing-library/user-event";
 import { games } from "./testData/Games"
 import { BackToTopButton } from "../gamecard/BackToTopButton";
 import { CommentView } from "../gamecard/Comment";
+import { GameCardModal } from "../gamecard/GameCardModal";
 
 const comment: Comment = {
   name: "the watcher",
@@ -20,9 +21,16 @@ for (let i = 0; i < 16; i++) {
   store.dataStore.data.push(games[i]);
 }
 
+window.scrollTo = jest.fn();
+
 afterEach(cleanup);
 
 describe("GameCards test", () => {
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
   it("renders without crashing, and shows correct games", async () => {
     render(
       <Provider {...defaultContext}>
@@ -50,12 +58,17 @@ describe("GameCards test", () => {
   it("game card modal test", () => {
     render(
       <Provider {...defaultContext}>
-        <MockedProvider addTypename={false}>
+        <MockedProvider addTypename={false}> 
           <GameCards />
         </MockedProvider>
       </Provider>
     );
 
+    expect(store.modalStore.game).toBeUndefined();
+    store.modalStore.selectGame(games[0].appId)
+    //screen.getByText(/mamamsds/i);
+    expect(store.modalStore.showModal).toEqual(true);
+    expect(store.modalStore.game).toEqual(games[0]);
     
   });  
 
