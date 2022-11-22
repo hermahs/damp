@@ -1,4 +1,4 @@
-import { Alert, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from '@mui/material';
+import { Alert, Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from '@mui/material';
 import React, { useState } from 'react';
 import { IFilterSettingTypeProp } from './types';
 
@@ -66,8 +66,10 @@ export const FilterSettingsGenre = (props: IFilterSettingTypeProp) => {
     return (
         <FormControl data-testid="settingsGenre">
             <FormLabel>Genre</FormLabel>
-            <FormGroup sx={{maxHeight: '250px', overflowX: 'scroll'}}>
-                {genre.map(g => <FormControlLabel key={g} control={<Checkbox onChange={(event) => handleChange(event, g)}/>} label={g}/>)}
+            <FormGroup sx={{maxHeight: '250px', overflowY: 'scroll', overflowX: 'hidden', flexWrap: 'wrap'}}>
+                <Box>
+                    {genre.map(g => <FormControlLabel sx={{width: 1}} key={g} control={<Checkbox onChange={(event) => handleChange(event, g)}/>} label={g}/>)}
+                </Box>
             </FormGroup>
             <Button onClick={addFilter}>Add filter</Button>
             <Alert severity='error' sx={{display: (error === "") ? 'none' : 'inherit'}}>{error}</Alert>

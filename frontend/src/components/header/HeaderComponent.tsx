@@ -31,19 +31,25 @@ export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) =>
   return (
     <Box sx={{ flexGrow: 1}}>
       <AppBar position='relative' sx={{backgroundColor: (props.darkMode? "##1e1e1e":"#283044")}}>
-        <Toolbar>
-          <Typography variant="h5" sx={{ flexGrow: 1 }} onClick={refreshPage}>
-            DAMP
-          </Typography>
-          <Button color="inherit" onClick={() => {
-            localStorage.setItem("dark-mode", JSON.stringify(!props.darkMode))
-            props.setDarkMode(!props.darkMode)
-            }}>
-            {props.darkMode ? "Dark" : "Light"}
-          </Button>
-          <Button color="inherit" onClick={handleOpen}>
-            ABOUT
-          </Button>
+        <Toolbar sx={{display: 'flex', alignContent: "space-between", width: 1}}>
+          <Box sx={{flexGrow: 1}}>
+            <Typography variant="h5" onClick={refreshPage} sx={{display: 'inline-block', '&:hover': {
+              cursor: 'pointer'
+            }}}>
+              DAMP
+            </Typography>
+          </Box>
+          <Box>
+            <Button color="inherit" onClick={() => {
+              localStorage.setItem("dark-mode", JSON.stringify(!props.darkMode))
+              props.setDarkMode(!props.darkMode)
+              }}>
+              {props.darkMode ? "Dark" : "Light"}
+            </Button>
+            <Button color="inherit" onClick={handleOpen}>
+              ABOUT
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
       <Modal
