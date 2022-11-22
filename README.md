@@ -88,3 +88,6 @@ Vi er kjent med at verdien av snapshottesting mye debattert i utviklingsmiljøet
 ### Backend
 
 I backend har vi forbedret testdekningsgraden til 100%. Alle endpoints'ene er testet. Dette kan ses ved å kjøre testene i backend. 
+### End 2 End
+
+E2E testing vår er ganske uendret fra prosjekt 3, siden vi gjorde det grundig den gang. Det vi har gjort i prosjekt 4 er å tilpasse de eksisterende testene til endringene som er gjort på nettsiden.
