@@ -1,0 +1,23 @@
+default:
+  image: node:16.18
+
+test-frontend:
+  stage: test
+  script:
+    - cd frontend
+    - npm install
+    - npm test -- --coverage --watchAll=false
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: ./frontend/coverage/cobertura-coverage.xml
+    expire_in: "10 days"
+  coverage: '/All files\s+\|\s+\d+\.\d+/'
+
+test-backend:
+  stage: test
+  script:
+    - cd backend
+    - npm install
+    - npm run test

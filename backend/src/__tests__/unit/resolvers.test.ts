@@ -5,43 +5,43 @@ import mongoose from "mongoose";
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { mockData } from "../../data/data";
 
+let db: MongoMemoryServer;
+let connection: mongoose.Connection;
+let count = 0;
+
 const connectDb = async (db: MongoMemoryServer) => {
     await mongoose.connect(db.getUri());
+    connection = mongoose.connection;
 }
 
 const disconnectFromDb = async () => {
-    await mongoose.disconnect();
+    await connection.close();
 }
 
 const addMockData = async () => {
     const l = mockData.map(d => ({...d, releaseDate: new Date(parseInt(d.releaseDate.$date.$numberLong)).toISOString()}));
     await Game.create(l);
-    return;
+    return Promise.resolve();
 }
 
-const dropMockData = async () => {
-    const collections = await mongoose.connection.db.collections();
-    collections.forEach(col => {
-        col.drop();
-    });
-}
+beforeAll(async () => {
+    db = await MongoMemoryServer.create();
+    await connectDb(db);
+    await addMockData();
+});
+
+afterAll(async () => {
+    if (db) {
+        await disconnectFromDb();
+        await db.stop();
+    }
+});
 
 describe("getGames", () => {
-    let db;
     let foundGames: IGame[] = [];
-
-    beforeAll(async () => {
-        db = await MongoMemoryServer.create();
-        await connectDb(db);
-        await addMockData();
-    });
 
     beforeEach(async () => {
         foundGames = [];
-    });
-
-    afterAll(async () => {
-        await disconnectFromDb();
     });
 
     it("should get 15 games", async () => {
@@ -288,17 +288,6 @@ describe("getGames", () => {
 });
 
 describe("getGame", () => {
-    let db;
-
-    beforeAll(async () => {
-        db = await MongoMemoryServer.create();
-        await connectDb(db);
-        await addMockData();
-    });
-
-    afterAll(async () => {
-        await disconnectFromDb();
-    });
 
     it("should get game with matching appId", async () => {
         const args = {
@@ -322,17 +311,6 @@ describe("getGame", () => {
 });
 
 describe("addComment", () => {
-    let db;
-
-    beforeAll(async () => {
-        db = await MongoMemoryServer.create();
-        await connectDb(db);
-        await addMockData();
-    });
-
-    afterAll(async () => {
-        await disconnectFromDb();
-    });
 
     it("should not update as id is wrong", async () => {
         const commentArgs = {

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Button, ButtonBase, Card, CardActions, CardContent, FormControl, Modal,  Rating, Stack, styled, TextField, Typography } from '@mui/material';
-import { Game, Comment } from '../../types';
+import { Comment } from '../../types';
 import { CommentView } from './Comment';
 import { ExpandMore } from '@mui/icons-material';
 import { useMutation } from '@apollo/client';
@@ -32,19 +32,19 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
     const [comment, setComment] = useState<string>("");
     const [nameError, setNameError] = useState<boolean>(false);
     const [commentError, setCommentError] = useState<boolean>(false);
-    const [addComment, addCommentData] = useMutation(ADD_COMMENT);
+    const [addComment] = useMutation(ADD_COMMENT);
 
     const { store } = useStores();
 
     const showImage = (url: string) => {
-        if (url === null) {
+        if (url === null || url === "") {
             return(<Img alt="complex" src="/images/default.png" />)
         }
         return(<Img alt="complex" src={url} />)
     };
 
     const showList = (list: string[]) => {
-        if (list === null || list === undefined) {
+        if (list === null || list === undefined || list.length === 0) {
             return "..."
         }
 
@@ -57,19 +57,16 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
     };
 
     const showDescription = (text: string) => {
-        try {
-            let t = text.substring(300)
-            let index = t.indexOf('.')
+        let t = text.substring(300)
+        let index = t.indexOf('.')
 
-            return text.substring(17, 300 + index + 1);
-        } catch {
-            return "No description..."
-        }
+        return text.substring(17, 300 + index + 1);
+        
     };
 
     const showPrice = (price: number) => {
-        if (price === null || price === undefined) {
-            return "unknown"
+        if (price === null || price === undefined || price === 0) {
+            return "Free"
         }
         return "$" + price
     };
@@ -126,8 +123,9 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
             onClose={props.onClose} 
             aria-labelledby="game-modal"
             aria-describedby="modal for showing more info about a game."
+            sx = {{ bgcolor: 'rgba(0, 0, 0, 0.8)' }}
         >
-            <Card sx={{...styleCard}} style={{maxWidth: "650px"}}>
+            <Card sx={{...styleCard}} style={{maxWidth: "650px", height: '90%' }}>
                     <ButtonBase sx={{ width: "100%", backgroundColor: "black"}}>
                         {showImage(store.modalStore.game.imagePath)}
                     </ButtonBase> 
@@ -155,12 +153,15 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                             <span style={{fontWeight: 'bold'}}>Achievements: </span> {store.modalStore.game.achievements}
                         </Typography>
                         <br/>
+                        {store.modalStore.game.game_description.length > 20 &&
+                        <> 
                         <Typography gutterBottom variant="h6" component="div">
                             Description
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {showDescription(store.modalStore.game.game_description)}
-                        </Typography>
+                        </Typography> 
+                        </> }
                         <br/>
                         {store.modalStore.game.all_reviews && 
                             <>  
@@ -175,7 +176,7 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                     </CardContent>
                     <CardActions>
                         <Accordion sx={{width: 1}}>
-                            <AccordionSummary expandIcon={<ExpandMore/>}>
+                            <AccordionSummary expandIcon={<ExpandMore/>} data-testid="make_comment">
                                 Add comment
                             </AccordionSummary>
                             <AccordionDetails>
@@ -185,12 +186,12 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                                             <TextField label="name" placeholder='username' value={name} onChange={handleChangeName} error={nameError} required data-testid="name_textbox"/>
                                             <Stack direction='row'>
                                                 <Typography component="legend">Rating</Typography>
-                                                <Rating name="rating" value={rating} onChange={handleChangeRating}/>
+                                                <Rating data-testid="rating" name="rating" value={rating} onChange={handleChangeRating}/>
                                             </Stack>
                                         </Stack>
                                         
                                         <TextField label="comment" placeholder='comment' value={comment} onChange={handleChangeComment} multiline rows={4} error={commentError} required data-testid="comment_textbox"/>
-                                        <Button onClick={handleAddComment}  sx={{ boxShadow: 2}} data-testid="add_comment">Add comment</Button>
+                                        <Button onClick={handleAddComment} sx={{ boxShadow: 2}} data-testid="add_comment">Add comment</Button>
                                     </Stack>
                                 </FormControl>
                             </AccordionDetails>

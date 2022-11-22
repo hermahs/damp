@@ -73,6 +73,7 @@ export const Search = observer(() => {
             <div className="parent">
               
                {openResetSearch && <Button
+                  data-testid="reset-search"
                   className="child"
                   sx={{ width: "fit-content", marginTop: 0}}
                   onClick={handleResetSearch}

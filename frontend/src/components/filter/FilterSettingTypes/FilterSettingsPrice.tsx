@@ -49,7 +49,7 @@ export const FilterSettingsPrice = (props: IFilterSettingTypeProp) => {
                 <Typography>Min: {valueDisplay(price[0])}</Typography>
                 <Typography>Max: {valueDisplay(price[1])}</Typography>
             </Box>
-            <Slider value={price} min={0} max={1000} onChange={handleChange} sx={{width: '85%', margin: 'auto'}}/>
+            <Slider data-testid={"slider"} value={price} min={0} max={1000} onChange={handleChange} sx={{width: '85%', margin: 'auto'}}/>
             <Button onClick={addFilter}>Add filter</Button>
             <Alert severity='error' sx={{display: (error === "") ? 'none' : 'inherit'}}>{error}</Alert>
         </FormControl>

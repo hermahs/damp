@@ -1,4 +1,3 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,22 +5,8 @@ import Typography from '@mui/material/Typography';
 import { Card, Modal, CardContent, Button } from '@mui/material';
 import { useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-//import Steam from '../../images/steam.png';
+import { Brightness4, Brightness7 } from '@mui/icons-material';
 
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '60%',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  overflow: "hidden",
-  overflowY: "scroll",
-};
 const styleCard = {
   position: 'absolute' ,
   top: '50%',
@@ -33,9 +18,7 @@ const styleCard = {
   overflowY: "scroll",
 };
 
-
-export function Header() {
-
+export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) => void}) {
   const [openModalInfo, setOpenModalInfo] = useState(false);
 
   const handleOpen = () => setOpenModalInfo(true);
@@ -47,16 +30,29 @@ export function Header() {
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='relative'>
-        <Toolbar>
-          {/** <img src={Steam} alt="Steam" style={{ width: 30, height: 30, borderRadius: 50, marginRight: 6 }}/> */}
-          <Typography variant="h5" sx={{ flexGrow: 1 }} onClick={refreshPage}>
-            DAMP
-          </Typography>
-          <Button color="inherit" onClick={handleOpen}>
-            ABOUT
-          </Button>
+    <Box sx={{ flexGrow: 1}}>
+      <AppBar position='relative' sx={{backgroundColor: (props.darkMode? "##1e1e1e":"#283044")}}>
+        <Toolbar sx={{display: 'flex', alignContent: "space-between", width: 1}}>
+          <Box sx={{flexGrow: 1}}>
+            <Typography variant="h5" onClick={refreshPage} sx={{display: 'inline-block', '&:hover': {
+              cursor: 'pointer'
+            }}}>
+              DAMP
+            </Typography>
+          </Box>
+          <Box>
+            <Button color="inherit" onClick={() => {
+              localStorage.setItem("dark-mode", JSON.stringify(!props.darkMode))
+              props.setDarkMode(!props.darkMode)
+              }}
+              endIcon={props.darkMode ? <Brightness4/> : <Brightness7/>}
+              >
+              {props.darkMode ? "Dark" : "Light"}
+            </Button>
+            <Button color="inherit" onClick={handleOpen}>
+              ABOUT
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
       <Modal

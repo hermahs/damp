@@ -4,7 +4,6 @@ import {
   fireEvent,
   render,
   screen,
-  waitFor,
   within,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -14,8 +13,7 @@ import "@testing-library/jest-dom";
 import { GameCards } from "../gamecard";
 import { Provider } from "mobx-react";
 import { store } from "../../store";
-import { act } from "react-dom/test-utils";
-import { runInAction } from "mobx";
+import renderer, { act } from "react-test-renderer";
 
 const mocks = [
   {
@@ -147,25 +145,26 @@ const mocks = [
   },
 ];
 
-const mockStore = {
-
-}
-
 afterEach(cleanup);
 
 describe("Searchbar test", () => {
   it("renders with correct search", () => {
     render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <Search/>
+        <Search />
       </MockedProvider>
     );
 
     screen.getByLabelText(/search/i);
-    userEvent.type(screen.getByLabelText(/search/i), "trackmania");
-    expect(screen.getByDisplayValue("trackmania")).toBeInTheDocument();
-  });
+    userEvent.type(screen.getByLabelText(/search/i), "t");
 
+    expect(store.dataStore.searchString).toBe("t");
+    expect(screen.getByDisplayValue("t")).toBeInTheDocument();
+
+    userEvent.type(screen.getByLabelText(/search/i), "{backspace}");
+    expect(store.dataStore.searchString).toBe("");
+  });
+  
   it("help icon works as intended", () => {
     render(
       <MockedProvider mocks={mocks} addTypename={false}>
@@ -175,24 +174,72 @@ describe("Searchbar test", () => {
 
     screen.getByTestId("HelpOutlineIcon");
     userEvent.hover(screen.getByTestId("HelpOutlineIcon"));
+
     expect(
       screen.getByText("You can search by game name, developer, or publisher")
     ).toBeInTheDocument();
+
+    userEvent.unhover(screen.getByTestId("HelpOutlineIcon"));
   });
+
+  it("help icon removes text on click", () => {
+    render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Search />
+      </MockedProvider>
+    );
+    
+    userEvent.click(screen.getByTestId("HelpOutlineIcon"));
+    
+  })
+
+  it("reset search", () => {
+    render(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Search />
+      </MockedProvider>
+    );
+
+    screen.getByLabelText(/search/i);
+    userEvent.type(screen.getByLabelText(/search/i), "typing");
+
+    act(() => {
+      screen.getByTestId("reset-search").click();
+    });
+
+    expect(screen.queryByText("typing")).not.toBeInTheDocument();
+    expect(store.dataStore.searchString).toBe("");
+  })
 
   it("gives no games found with bad search", async () => {
     render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <Provider {...store}>
           <Search />
-          <GameCards/>
+          <GameCards />
         </Provider>
       </MockedProvider>
     );
     screen.getByTestId("searchBox");
-    const field = within(screen.getByTestId("searchBox")).getByLabelText("search");
+    const field = within(screen.getByTestId("searchBox")).getByLabelText(
+      "search"
+    );
     expect(field).toBeInTheDocument();
-    fireEvent.change(field, {target: { value: "trackmania" }});
+    fireEvent.change(field, { target: { value: "trackmania" } });
     expect(screen.getByDisplayValue("trackmania")).toBeInTheDocument();
-  });
+  }); 
 });
+
+
+describe("Searchbar snapshot test", () => {
+  it("render searcherbar", () => {
+    const tree = renderer
+      .create(
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Search />
+        </MockedProvider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  }); 
+}); 

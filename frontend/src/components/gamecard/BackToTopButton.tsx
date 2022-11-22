@@ -19,10 +19,11 @@ export const BackToTopButton = () => {
       top: 0,
       behavior: "smooth",
     });
+    setBackToTopButton(false);
   };
 
   return (
-    <div
+    <div data-testid="back-to-top"
       style={{
         position: "fixed",
         bottom: "20px",
@@ -31,6 +32,7 @@ export const BackToTopButton = () => {
     >
       {backToTopButton && (
         <ArrowCircleUpRoundedIcon
+          data-testid="ArrowIcon"
           onClick={scrollToTop}
           sx={{
             backgroundColor: "white",

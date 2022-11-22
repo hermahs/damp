@@ -13,8 +13,7 @@ Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. 
     - Frontend -> `cd frontend && npm run test`
 * E2E
     1. Start backend -> `cd backend && npm run dev`. Dette starter backend i test modus
-    2. start frontend -> `cd frontend && npm start`
-    3. kjør cypress -> `cd frontend && npm run cypress`
+    2. kjør cypress -> `cd frontend && npm run cypress` *For at dette skal fungere riktig så kan ikke frontend kjøre samtidig som dette kalles*
 
 
 ## Oppgaven vi valgte 
