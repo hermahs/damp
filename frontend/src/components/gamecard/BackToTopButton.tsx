@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ArrowCircleUpRoundedIcon from "@mui/icons-material/ArrowCircleUpRounded";
 
-export const BackToTopButton = () => {
+export const BackToTopButton = (props: {darkmode: boolean}) => {
   const [backToTopButton, setBackToTopButton] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export const BackToTopButton = () => {
           data-testid="ArrowIcon"
           onClick={scrollToTop}
           sx={{
-            backgroundColor: "white",
+            backgroundColor: props.darkmode ? '#121212': 'white',
             borderRadius: "50%",
             width: 50,
             height: 50,

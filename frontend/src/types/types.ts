@@ -28,3 +28,16 @@ export enum SortType {
     PRICE = "PRICE",
     NONE = "NONE"
 }
+
+export interface IFilterData {
+    type: string;
+    data: number | string[] | number[] | (Date | null)[];
+    visualData: string;
+}
+
+export interface IFilter {
+    name: string;
+    color: string;
+    description: string;
+    data?: IFilterData;
+}

@@ -8,7 +8,7 @@ import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { GameCardModal } from "./GameCardModal";
 import { BackToTopButton } from './BackToTopButton';
 
-export const GameCards = observer(() => {
+export const GameCards = observer((props: {darkmode: boolean}) => {
     const { store } = useStores();
 
     const handleScroll = (_: Event) => {
@@ -45,7 +45,7 @@ export const GameCards = observer(() => {
             
             <GameCardModal open={store.modalStore.showModal} onClose={handleClose} />
             {store.dataStore.loading && <Box sx={{mx: 'auto', width: 'fit-content'}}><CircularProgress sx={{mx: 'auto'}}/></Box>}
-            <BackToTopButton data-testid="back-to-top-button"/>
+            <BackToTopButton data-testid="back-to-top-button" darkmode={props.darkmode}/>
         </Grid>
     );
 });

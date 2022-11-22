@@ -7,6 +7,7 @@ import { Box, CardActionArea, Chip, Grid } from "@mui/material";
 import { observer } from "mobx-react";
 import { Game } from "../../types";
 
+// genres to color
 const genreColorMap = {
   "Accounting": "#440154",
   "Action": "#470d60",

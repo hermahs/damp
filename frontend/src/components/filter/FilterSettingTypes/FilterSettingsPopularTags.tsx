@@ -1,7 +1,8 @@
-import { Alert, Autocomplete, Button, Chip, FormControl, Paper, TextField } from '@mui/material';
+import { Alert, Autocomplete, Button, FormControl, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { IFilterSettingTypeProp } from './types';
 
+// all tags available for the user
 const tags = ['1980s',
 "1990's",
 '2.5D',
@@ -406,10 +407,7 @@ export const FilterSettingsPopularTags = (props: IFilterSettingTypeProp) => {
         if (value !== null) {
             addTag(value);
         }
-      };
-
-
-   
+    };
 
     return (
        <FormControl sx={{ width: 1, height: 200 }}>
@@ -420,7 +418,7 @@ export const FilterSettingsPopularTags = (props: IFilterSettingTypeProp) => {
                 onChange={handleInput}
                 getOptionLabel={(option) => option}
                 renderInput={(params) => (
-                <TextField {...params} InputProps={{...params.InputProps, type: 'search'}} label="Tags" placeholder="Tag" />
+                    <TextField {...params} InputProps={{...params.InputProps, type: 'search'}} label="Tags" placeholder="Tag" />
                 )}
             />
             <Button onClick={addFilter}>Add filter</Button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { IFilterData } from '../../store/filterStore';
 import { FilterSettingsAchievements, FilterSettingsGenre, FilterSettingsPopularTags, FilterSettingsPrice, FilterSettingsReleaseDate } from './FilterSettingTypes';
+import { IFilterData } from '../../types';
 
 export const FilterSettings = (props: {filter: string, callBack: (filter: string, data: IFilterData) => void}) => {
 

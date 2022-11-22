@@ -10,6 +10,9 @@ interface ISort {
     type: SortType;
 }
 
+/**
+ * Store handling data fetching and querying the database
+ */
 export class DataStore {
     data: IObservableArray<Game>;
     pageNumber: number;

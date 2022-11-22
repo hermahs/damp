@@ -115,7 +115,7 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
         }
 
     }
-
+    // return nothing if a game is not selected
     if (store.modalStore.game === undefined) return (<></>);
     else return (
         <Modal
