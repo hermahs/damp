@@ -21,7 +21,7 @@ Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. 
 
 Til prosjekt 4 har vi valgt å kombinere to av de mulige oppgavene. Vi valgte å forbedredre og systematisk enhetsteste backend og klient fra prosjekt 3 (oppgave b) og vi valgte å perfeksjonere klient og backend fra prosjekt 3 (oppgave c). Vi har tatt utgangspunkt i å løse all kritikk vi fikk i tilbakemeldingene fra prosjekt 3, samt å sikte oss inn på en testdekningsgrad av applikasjonen på 100%. 
 
-## Tilbakemeldinger
+## Tilbakemeldinger fra prosjekt 3
 
 * Reset page - mulighet til å tilbakestille nettsiden uten å laste inn siden på nytt
 * Snapshot testing - benytte oss av snapshot tester
@@ -45,7 +45,9 @@ Vi startet med å sette opp issues for alle tilbakemeldingene vi fikk, for å ku
 
 Av mer krevende inngrep har vi innført funksjonalitet for å vise tre spill i bredden i grid-format når skjermen er bred nok. Selve spillkortet har også fått et nytt design som er mer estetisk og viser mer relevant informasjon. Vi har også fikset problematikk rundt at applikasjonen viste ratings og reviews, selvom denne informasjonen manglet fra databasen. Vi hadde også et problem med at om man sorterte på pris, ascending, kom de spillene som manglet pris opp først. Dette er jo ikke det man leter etter om man sorterer for billigste spill, og vi har fikset dette problemet. 
 
-Nettsiden er nå gjort mulig å navigere kun gjennom tastaturet. Dette skriver vi mer om i Web tilgjengelighet.
+Siden viser nå tre spill i bredden istedenfor ett som det var i forrige utgave. Vi mener dette var bedre bruk av plass, og at det gjør at applikasjonen ser bedre ut. Denne avgjørelsen er også basert på tilbakemeldingene vi har fått. 
+
+Nettsiden er også nå bedre egnet til å navigere kun gjennom tastaturet. Dette skriver vi mer om i Web tilgjengelighet.
 
 #### Backend
 
@@ -53,13 +55,11 @@ Vi fikk ikke noen kommentarer på backenden vår. Dermed har det ikke blitt gjor
 
 #### Web tilgjengelighet
 
-En tilbakemelding vi fikk gikk på muligheten til å nagivere nettsiden gjennom tastaturet. I prosjekt 3 viste ikke netssiden hvilket spill som var i fokus når man tabbet gjennom spillene. Dette løste vi ved å endre fargen på spillkortene på onFocus til en gråfarge som fungerte fint for både vanlig og darkmode. Basert på tilbakemeldinger har vi også valgt å forbedre kommenteringen vår i koden. Dette gjør koden mer tilgjengelig for alle, og man kan også lettere forstå hvorfor den er bygget opp som den er. 
+En tilbakemelding vi fikk gikk på muligheten til å nagivere nettsiden gjennom tastaturet. I prosjekt 3 viste ikke netssiden hvilket spill som var i fokus når man tabbet gjennom spillene. Dette løste vi ved å endre fargen på spillkortene på onFocus til en gråfarge som fungerte for både vanlig og darkmode. Basert på tilbakemeldinger har vi også valgt å forbedre kommenteringen vår i koden. Dette gjør koden mer tilgjengelig for alle, og man kan også lettere forstå hvorfor den er bygget opp som den er. 
 
 #### Bærekraftig webutvikling
 
 Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har en enkel knapp i headeren til å bytte tema, som også forteller deg hva slags tema du bruker nå. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen vært nødt til å endre enkelte tekstfarger slik at alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også strøm. Vi valgte også å benytte os av localStorage til å huske brukerens valg. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det som hensiktsmessig å implementere det.
-
-At vi nå viser tre spill i bredden er også mer bærekraftig, da vi benytter mer av plassen til å vise relevant innhold.
 
 ## Testing i prosjekt 4
 
