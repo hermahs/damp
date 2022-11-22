@@ -16,6 +16,7 @@ export const FilterSettingsReleaseDate = (props: IFilterSettingTypeProp) => {
 
     const addFilter = () => {
         let visualDataString;
+        // formats the visual string based on what dates you picked
         if (startDate !== null && endDate !== null) {
             visualDataString = `Between ${startDate.format('DD/MM/YYYY')} and ${endDate.format('DD/MM/YYYY')}`;
         } else if (startDate !== null && endDate === null) {

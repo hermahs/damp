@@ -1,18 +1,6 @@
 import { observable, action, makeObservable, runInAction, computed } from 'mobx';
+import { IFilter, IFilterData } from '../types';
 import { RootStore } from './rootStore';
-
-export interface IFilterData {
-    type: string;
-    data: number | string[] | number[] | (Date | null)[];
-    visualData: string;
-}
-
-export interface IFilter {
-    name: string;
-    color: string;
-    description: string;
-    data?: IFilterData;
-}
 
 interface ReturnData {
     genre?: string[];
@@ -22,7 +10,11 @@ interface ReturnData {
     tags?: string[];
 }
 
+/**
+ * Store that handles filters and lets the data store get a query to send to the database
+ */
 export class FilterStore {
+    // used sets here just because we want only unique values
     activeFilters: Set<IFilter> = new Set<IFilter>();
     allFilters: Set<IFilter> = new Set<IFilter>([
         {name: "Genre", color: "#F2994A", description: "The genre of the game"}, 
@@ -53,6 +45,9 @@ export class FilterStore {
         return false;
     }
 
+    /**
+     * Adds a filter to the query when a filter is added such that the data store can use it to make a query with the new parameters
+     */
     private addFilterQuery (filter: IFilter) {
         switch (filter.name) {
             case "Genre":

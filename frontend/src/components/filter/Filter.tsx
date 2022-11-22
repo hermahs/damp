@@ -4,9 +4,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Card, Chip, Popover
 import { observer } from 'mobx-react';
 import { useStores } from '../../hooks';
 import { FilterSettings } from './FilterSettings';
-import { IFilterData } from '../../store/filterStore';
-
-
+import { IFilterData } from '../../types';
 
 export const Filter = observer(() => {
     const { store } = useStores();

@@ -5,6 +5,9 @@ import { Game } from "../types";
 import { client } from "../util";
 import { RootStore } from "./rootStore";
 
+/**
+ * Store handling the modal and data fetching for it
+ */
 export class ModalStore {
     selectedGame: number = -1;
     game: Game | undefined;

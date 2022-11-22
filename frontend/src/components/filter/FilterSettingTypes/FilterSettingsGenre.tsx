@@ -2,6 +2,7 @@ import { Alert, Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup,
 import React, { useState } from 'react';
 import { IFilterSettingTypeProp } from './types';
 
+// genres to select from
 const genre = [ 'Accounting',
  'Action',
  'Adventure',

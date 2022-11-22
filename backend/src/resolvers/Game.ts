@@ -1,9 +1,12 @@
 import { Game } from "../models";
 import { QueryConfig, SortConfig } from "../types";
 
-export async function getGames(_1: any, args: any, _2: any, _3: any) {
+/** The query we get from graphql requires 4 arguments, but we only care about the `args` argument */
+export async function getGames(_1: any, args: any, _3: any, _4: any) {
     const config: QueryConfig = {}
     const sort: SortConfig = {}
+    
+    // check if filters have been passed to the graphql query and handle it
     if (args.filter) {
         for (const key of Object.keys(args.filter)) {
             if (args[key] !== null) {

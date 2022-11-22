@@ -28,7 +28,6 @@ export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) =>
     window.location.reload();
   }
 
-
   return (
     <Box sx={{ flexGrow: 1}}>
       <AppBar position='relative' sx={{backgroundColor: (props.darkMode? "##1e1e1e":"#283044")}}>
