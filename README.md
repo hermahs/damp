@@ -67,15 +67,19 @@ At vi nå viser tre spill i bredden er også mer bærekraftig, da vi benytter me
 
 [![coverage report](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/badges/main/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/-/commits/main) 
 
-Vi tester nå alt i applikasjonen som klarer å testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi utrolig nærme 100%. Vi er klar over at dette ikke reflekterer at appen er perfekt dekket av tester, men vi har lært mange nye måter å teste funksjonalitet på som vi tidligere ikke har kunnet. Dette har også gjort at vi har vært nødt til å gå grundigere til verks og testet så godt som alt av edge-cases.
+Vi tester nå alt i applikasjonen som klarer å testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi utrolig nærme 100%. Grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet. Selvom appen nesten er 100% dekket av tester er vi klar over at dette ikke reflekterer at appen er perfekt dekket, men dekningsgraden var et godt utgangspunkt. Dette har også gjort at vi har vært nødt til å gå grundigere til verks og testet så godt som alt av edge-cases.
 
 ### Pipeline added 
 
+En pipeline er et viktig verktøy for å kunne drive med CI/CD (continous integration and continous delivery/deployment). Pipelinen vi opprettet i dette prosjektet kjører koden og testene våre, og sørger for at det ikke har dukket opp noen endringer som enten gir en feilmeldinger eller som gjør at noen av testene våre feiler. Dette har hjulpet oss flere ganger under utviklingen med å plukke opp feil før vi fikk merget koden vår til main. Dette er et enkelt grep som kan forhindre at små feil kan bli liggende i koden.
+
 ### Komponenttesting
+
+Alle komponentene i prosjektet er grundig testet. Vi har testet komponentene i isolasjon, siden det er mest hensiktsmessig å teste de individuelt. Her har dekningsgraden av testene vært et godt verktøy for å ikke glemme å teste noe. Dekningsgraden har pekt på hvilke linjer som har manglet testing, som har gjort at ingenting har sklidd under radaren.
 
 ### Snapshottesting
 
-Vi er kjent med at det er mye debatt i utviklingsmiljøet om nyttigheten av snapshottesting. I et virkelig prosjekt ville vi ikke nødvendigvis benyttet oss av dette. Vi har valgt i dette prosjektet å ta det med for å lære om hvordan man utfører det og for å vise kunnskap om utviklingen av snapshottesting. 
+Vi er kjent med at verdien av snapshottesting mye debattert i utviklingsmiljøet. I et virkelig prosjekt ville vi ikke nødvendigvis benyttet oss av dette. Vi har valgt å ta det med i dette prosjektet for å lære om hvordan man implementerer snapshottesting.
 
 ### Endpoint testing
 
