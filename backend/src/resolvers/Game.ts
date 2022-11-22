@@ -1,7 +1,8 @@
 import { Game } from "../models";
 import { QueryConfig, SortConfig } from "../types";
 
-export async function getGames(_1: any, args: any) {
+/** The query we get from graphql requires 4 arguments, but we only care about the `args` argument */
+export async function getGames(_1: any, args: any, _3: any, _4: any) {
     const config: QueryConfig = {}
     const sort: SortConfig = {}
     
