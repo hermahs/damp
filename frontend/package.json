@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "concurrently \"npm start\" \"npx cypress open\""
+    "cypress": "concurrently \"npm start\" \"npx cypress run\""
   },
   "eslintConfig": {
     "extends": [
@@ -68,7 +68,8 @@
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/index.ts",
       "!src/**/types.ts",
-      "!<rootDir>/node_modules/"
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/index.tsx"
     ],
     "coverageReporters": [
       "html",

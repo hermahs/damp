@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, Button, ButtonBase, Card, CardActions, CardContent, FormControl, Modal,  Rating, Stack, styled, TextField, Typography } from '@mui/material';
-import { Game, Comment } from '../../types';
+import { Comment } from '../../types';
 import { CommentView } from './Comment';
 import { ExpandMore } from '@mui/icons-material';
 import { useMutation } from '@apollo/client';
@@ -32,7 +32,7 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
     const [comment, setComment] = useState<string>("");
     const [nameError, setNameError] = useState<boolean>(false);
     const [commentError, setCommentError] = useState<boolean>(false);
-    const [addComment, addCommentData] = useMutation(ADD_COMMENT);
+    const [addComment] = useMutation(ADD_COMMENT);
 
     const { store } = useStores();
 
