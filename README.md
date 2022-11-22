@@ -69,7 +69,7 @@ Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer b�
 
 (Merk når det snakkes om testdekningsgrad i dette avsnittet er det kun snakk om i frontend)
 
-Vi tester nå alt i applikasjonen som klarer å testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi utrolig nærme 100%. En grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet. En annen grunn til at vi ikke nådde 100% er at MUI-biblioteket vi har en del funksjonalitet som er ekstremt vanskelig å teste. Her har vi gjort så godt som mulig med den tiden vi hadde til rådighet. Vi valgte å ikke bruke mye tid på å teste ekstremt sjeldne edge-cases, men heller ser på mer realistiske tilfeller.
+Vi tester nå alt i applikasjonen som skal kunne testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi utrolig nærme 100%. En grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet. En annen grunn til at vi ikke nådde 100% er at MUI-biblioteket vi har en del funksjonalitet som er ekstremt vanskelig å teste. Her har vi gjort så godt som mulig med den tiden vi hadde til rådighet. Vi valgte å ikke bruke mye tid på å teste ekstremt sjeldne edge-cases, men heller ser på mer realistiske tilfeller.
 
 Selvom appen nesten er 100% dekket av tester er vi klar over at dette ikke reflekterer at appen er perfekt dekket, men dekningsgraden var et godt utgangspunkt. Dette har også gjort at vi har vært nødt til å gå grundigere til verks og testet så godt som alt av edge-cases.
 
@@ -83,7 +83,7 @@ Alle komponentene i prosjektet er grundig testet. Vi har testet komponentene i i
 
 ### Snapshottesting
 
-Vi er kjent med at verdien av snapshottesting mye debattert i utviklingsmiljøet. I et virkelig prosjekt ville vi ikke nødvendigvis benyttet oss av dette. Vi har valgt å ta det med i dette prosjektet for å lære om hvordan man implementerer snapshottesting.
+Vi er kjent med at verdien av snapshottesting mye debattert i utviklermiljøet. I et virkelig prosjekt ville vi ikke nødvendigvis benyttet oss av dette. Vi har valgt å ta det med i dette prosjektet for å lære om hvordan man implementerer snapshottesting.
 
 ### Backend
 
