@@ -133,7 +133,7 @@ export const GameCardDisplay = observer((props: { game: Game; onClick: () => voi
                 </Box>
               </Grid>
               <Grid item display="flex" flexWrap="wrap" flexDirection="row">
-                    {props.game.genre.slice(0,3).map(genre => 
+                    {props.game.genre !== null && props.game.genre.slice(0,3).map(genre => 
                         <Chip label={genre} key={genre} sx={{mr: 0.5, mb: 0.5, backgroundColor: genreColorMap[genre as keyof typeof genreColorMap], color: 'white', fontSize: "0.8rem"}}/>
                     )}
               </Grid>
