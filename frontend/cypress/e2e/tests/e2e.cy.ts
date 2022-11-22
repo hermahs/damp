@@ -37,14 +37,18 @@ describe("E2E tests, with some simple tests", () => {
 
   it("user check price of game", () => {
     let newItem = "eve";
-    cy.get("[data-testid=searchBox]").type(`${newItem}{enter}`);
+    cy.wait(5000);
+    cy.get("[data-testid=searchBox]").type(`${newItem}`);
+    cy.wait(500);
     cy.get("[data-testid=gameCard-EVEOnline]")[0].click();
     cy.get('/\$19\.99/i');
   });
-
+  
   it.only("user add comment to a game", () => {
-    let newItem = "eve";
-    cy.get("[data-testid=searchBox]").type(`${newItem}{enter}`);
+    let newItem = "eve online";
+    cy.wait(1500);
+    cy.get("[data-testid=searchBox]").type(`${newItem}`);
+    cy.wait(1500);
     cy.get("[data-testid=gameCard-EVEOnline]").first().click();
     cy.get(
       ".MuiCardActions-root > .MuiPaper-root > .MuiAccordionSummary-root"

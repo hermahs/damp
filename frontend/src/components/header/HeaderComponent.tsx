@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { Card, Modal, CardContent, Button } from '@mui/material';
 import { useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Brightness4, Brightness7 } from '@mui/icons-material';
 
 const styleCard = {
   position: 'absolute' ,
@@ -35,10 +36,12 @@ export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) =>
           <Typography variant="h5" sx={{ flexGrow: 1 }} onClick={refreshPage}>
             DAMP
           </Typography>
-          <Button color="inherit" onClick={() => {
+          <Button color="inherit" data-testid="darkmodeButton" onClick={() => {
             localStorage.setItem("dark-mode", JSON.stringify(!props.darkMode))
             props.setDarkMode(!props.darkMode)
-            }}>
+            }}
+            endIcon={(props.darkMode ? <Brightness7/> : <Brightness4/>)}
+            >
             {props.darkMode ? "Dark" : "Light"}
           </Button>
           <Button color="inherit" onClick={handleOpen}>
