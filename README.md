@@ -19,7 +19,7 @@ Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. 
 
 ## Oppgaven vi valgte 
 
-Til prosjekt 4 har vi valgt å kombinere to av de mulige oppgavene. Vi valgte å forbedredre og systematisk enhetsteste backend og klient fra prosjekt 3 (oppgave b) og vi valgte å perfeksjonere klient og backend fra prosjekt 3 (oppgave c). Vi har tatt utgangspunkt i å løse all kritikk vi fikk i tilbakemeldingene fra prosjekt 3, samt å sikte oss inn på en testdekningsgrad av applikasjonen på 100%. 
+Til prosjekt 4 har vi valgt å kombinere to av de mulige oppgavene. Vi valgte å forbedre og systematisk enhetsteste backend og klient fra prosjekt 3 (oppgave b) og å perfeksjonere klient og backend fra prosjekt 3 (oppgave c). Vi har tatt utgangspunkt i å løse all kritikk vi fikk i tilbakemeldingene fra prosjekt 3, samt å sikte oss inn på en testdekningsgrad av applikasjonen på 100%. 
 
 ## Tilbakemeldinger fra prosjekt 3
 
