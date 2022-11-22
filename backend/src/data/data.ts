@@ -1,3 +1,4 @@
+// mock data for testing
 export const mockData = [
   {
     url: "https://store.steampowered.com/app/379720/DOOM/",

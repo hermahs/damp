@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ArrowCircleUpRoundedIcon from "@mui/icons-material/ArrowCircleUpRounded";
 
-export const BackToTopButton = (props: {darkmode: boolean}) => {
+export const BackToTopButton = (props: {darkmode?: boolean}) => {
   const [backToTopButton, setBackToTopButton] = useState(false);
 
   useEffect(() => {

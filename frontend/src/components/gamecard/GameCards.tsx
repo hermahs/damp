@@ -8,7 +8,7 @@ import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { GameCardModal } from "./GameCardModal";
 import { BackToTopButton } from './BackToTopButton';
 
-export const GameCards = observer((props: {darkmode: boolean}) => {
+export const GameCards = observer((props: {darkmode?: boolean}) => {
     const { store } = useStores();
 
     const handleScroll = (_: Event) => {
