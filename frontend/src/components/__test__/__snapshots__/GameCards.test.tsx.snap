@@ -309,6 +309,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-Fifa21"
       onClick={[Function]}
     >
       <button
@@ -407,6 +408,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-HabboHotel"
       onClick={[Function]}
     >
       <button
@@ -505,6 +507,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-Minecraft"
       onClick={[Function]}
     >
       <button
@@ -603,6 +606,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-COD"
       onClick={[Function]}
     >
       <button
@@ -701,6 +705,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-Fortnite"
       onClick={[Function]}
     >
       <button
@@ -799,6 +804,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-DOOM"
       onClick={[Function]}
     >
       <button
@@ -897,6 +903,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-MannyCalavera"
       onClick={[Function]}
     >
       <button
@@ -995,6 +1002,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-Evensen"
       onClick={[Function]}
     >
       <button
@@ -1093,6 +1101,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-MoneyHeist"
       onClick={[Function]}
     >
       <button
@@ -1191,6 +1200,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-TheWitcher"
       onClick={[Function]}
     >
       <button
@@ -1289,6 +1299,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-TheLastofUs"
       onClick={[Function]}
     >
       <button
@@ -1387,6 +1398,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-TheLastofUs2"
       onClick={[Function]}
     >
       <button
@@ -1485,6 +1497,7 @@ exports[`Filter snapshot test render filter component 1`] = `
   >
     <div
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-133i4ok-MuiPaper-root-MuiCard-root"
+      data-testid="gameCard-Movistar"
       onClick={[Function]}
     >
       <button
