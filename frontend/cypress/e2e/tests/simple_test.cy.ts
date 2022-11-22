@@ -8,7 +8,7 @@ describe('The Home Page', () => {
     it('header contains title', () => {
         cy.visit('/') // change URL to match your dev URL
 
-        cy.contains('Damp')
+        cy.contains('DAMP')
 
         cy.contains('Filter')
       })

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -87,6 +87,7 @@ export const GameCardDisplay = observer(
             theme.palette.mode === "dark" ? "#1A2027" : "#fff",
         }}
         onClick={props.onClick}
+        data-testid={`gameCard-${props.game.name.replace(/\s/g, '')}`}
       >
         <CardActionArea sx={{height: 1}}>
           {showImage(props.game.imagePath)}
