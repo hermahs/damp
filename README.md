@@ -1,8 +1,6 @@
 [![coverage report](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/badges/main/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/-/commits/main) 
 
-# Prosjekt 3 - IT2810 Webutvikling
-
-Prosjektet går ut på å hente data fra en database og implementere søk og interaksjon for å visualisere dataen. Vi har valgt å kalle applikasjonen vår Damp, som har som hensikt å hente ut ulike spill for PC. Til dette har vi valgt å bruke et datasett som inneholder over 40.000 spillobjekter.
+# Prosjekt 4 - IT2810 Webutvikling
 
 ## Kommandoer
 
@@ -17,86 +15,79 @@ Se README i backend og frontend for videre kommandoer for å kjøre prosjektet. 
     1. Start backend -> `cd backend && npm run dev`. Dette starter backend i test modus
     2. kjør cypress -> `cd frontend && npm run cypress` *For at dette skal fungere riktig så kan ikke frontend kjøre samtidig som dette kalles*
 
-## Innhold
 
-Applikasjonen har en side, SPA, og er en liste med spill fra spillplattformen Steam. Når man klikker på et spill, kommer det opp en modal med mer detaljert informasjon om det spesifikke spillet. Applikasjonen er optimalisert for mobil, men fungerer vel så godt på større skjermer. Applikasjonen har også funksjonalitet for søking, filtrering og sortering. Man kan søke på spill ved å skrive inn i søkefeltet og søke på navn på spillet, utvikler eller utgiver. Filtreringen fungerer ved at man velger en eller flere filtre, for så å få opp spill som tilfredstiller disse. Filtrene man kan velge mellom er sjanger, lanseringsdato, pris, prestasjoner eller tags. Tags er forskjellige emneknagger Steam bruker på spillene sine, som 3D, base building, bmx osv. Sorteringen sorterer på enten navn, pris eller lanseringsdato, og man kan selv velge om sorteringen skal være stigende eller synkende. Pagineringen på siden fungerer sånn at det lastes inn 15 spill om gangen, og når man blar nedover så lastes det inn 15 spill til hver gang du når bunnen av siden. Brukere har mulighet til å legge igjen kommentarer på de ulike spillene på siden, sammen med en stjernerangering. Disse lagres persistent på databaseserveren.
+## Oppgaven vi valgte 
 
+Til prosjekt 4 har vi valgt å kombinere to av de mulige oppgavene. Vi valgte å forbedre og systematisk enhetsteste backend og klient fra prosjekt 3 (oppgave b) og å perfeksjonere klient og backend fra prosjekt 3 (oppgave c). Vi har tatt utgangspunkt i å løse all kritikk vi fikk i tilbakemeldingene fra prosjekt 3, samt å sikte oss inn på en testdekningsgrad av applikasjonen på 100%. 
 
-## Frontend
+## Tilbakemeldinger fra prosjekt 3
 
-Applikasjonen er laget ved hjelp av React og skrevet i TypeScript, og hensikten med den er å kunne søke på og filtrere spill fra nettbutikken Steam.
+* Reset page - mulighet til å tilbakestille nettsiden uten å laste inn siden på nytt
+* Snapshot testing - benytte oss av snapshot tester
+* Tabbing through the games - mulighet til å navigere hele nettsiden med tastaturet
+* Display the games in a grid - benytte ubrukt plass på siden til forhåndsvisning av spill
+* Dark mode for sustainability - mulighet for å velge darkmode
+* Comments in the code - mer kommentarer i koden for å forklare komplisert funksjonalitet
+* Disable sort button - ikke mulig å klikke på sorter-knappen når ingen parametre er valgt
+* Dynamic loading of data - ikke vise reviews eller ratings dersom informasjonen mangler i databasen
+* Problem with sorting on price - når man sorterer på pris (lav-høy) så skal man se de billigste spillene først, og ikke de som mangler pris
+* Improve size of tags box - forstørre listen man velger fra når man velger tags
 
+### Hvordan har vi gått frem for å forbedre disse?
 
-### Apollo Client
+#### Frontend
 
-Vi brukte apollo client til å koble dataen i backend fra databasen sammen med frontend så vi kan bruke det i applikasjonen. Apollo client gir tilgang til hooken useQuery, som lar oss spørre etter data fra databasen til komponentene. Den "cacher" også automatisk spørringene, så vi raskere kan hente inn dataen fra GraphQL. Den inneholder også funksjonalitet for automatisk oppdatering av grensesnittet.
+Vi startet med å sette opp issues for alle tilbakemeldingene vi fikk, for å kunne forbedre applikasjonen fra et brukerperspektiv. Av enkle quick-fixes har vi gjort følgende: 
+* Laget en knapp som tilbakestiller alle filtre og sorteringer man har valgt
+* Deaktivert sorteringsknappen når ingen krav er valgt
+* Endret størrelsen på tags-boksen så man lettere kan se alle tagsene man har å velge mellom.
 
-### Global state management - Mobx
+Av mer krevende inngrep har vi innført funksjonalitet for å vise tre spill i bredden i grid-format når skjermen er bred nok. Selve spillkortet har også fått et nytt design som er mer estetisk og viser mer relevant informasjon. Vi har også fikset problematikk rundt at applikasjonen viste ratings og reviews, selvom denne informasjonen manglet fra databasen. Vi hadde også et problem med at om man sorterte på pris, ascending, kom de spillene som manglet pris opp først. Dette er jo ikke det man leter etter om man sorterer for billigste spill, og vi har fikset dette problemet. 
 
-I dette prosjektet har vi valgt å benytte oss av Mobx for å håndtere global state management. Grunnen til det er at Mobx på mange måter er ganske enkelt å bruke og bygd opp på en lite komplisert måte. Dette kommer av at man definerer hvilke tilstander vi ønskaer å lagre lokalt, for så å enkelt benytte seg av disse i andre komponenter. 
+Siden viser nå tre spill i bredden istedenfor ett som det var i forrige utgave. Vi mener dette var bedre bruk av plass, og at det gjør at applikasjonen ser bedre ut. Denne avgjørelsen er også basert på tilbakemeldingene vi har fått. 
 
-Gruppen satt opp flere *stores* for de forskjellige dataene og tilstandene vi ønsket å holde styr på. Vi endte opp med 3 stores, en for data, en for filter, og en for dataen i modalen. Storene blir eksportert i en kjernestore, til oss kalt *rootStore*; og får å gjøre den tilgjengelig for komponentene hadde vi dem i en react context. For at stores i Mobx skal kunne snakke sammen, må de ha en rootStore som passer på at de alle er initialisert før man henter data fra de.
+Nettsiden er også nå bedre egnet til å navigere kun gjennom tastaturet. Dette skriver vi mer om i Web tilgjengelighet.
 
-En ulempe med å bruke mobx er at det ikke er like godt innebygd i React som redux og recoil, men fungerer veldig bra med utvidelsen **mobx-react** som de har laget.
+#### Backend
 
-### Material UI
+Vi fikk ikke noen kommentarer på backenden vår. Dermed har det ikke blitt gjort noen funksjonelle endringer i backenden i denne delen av prosjektet. Det er skrevet flere tester til backend og dette diskuteres mer senere i dokumentasjonen.
 
-Vi har brukt biblioteket material UI til flere av komponentene våre. Vi har brukt dette biblioteket før, og synes det er enkelt å jobbe med og at det skalerer bra som gir et responsivt design. Vi har hatt litt problemer med testing av materialUI komponentene, men den tiden vi sparer på å gjenbruke det har vært verdt det så vi har hatt tid til å fokusere mer på hoveddelen av oppgaven.
+#### Web tilgjengelighet
 
-## Backend
+En tilbakemelding vi fikk gikk på muligheten til å nagivere nettsiden gjennom tastaturet. I prosjekt 3 viste ikke netssiden hvilket spill som var i fokus når man tabbet gjennom spillene. Dette løste vi ved å endre fargen på spillkortene på onFocus til en gråfarge som fungerte for både vanlig og darkmode. Basert på tilbakemeldinger har vi også valgt å forbedre kommenteringen vår i koden. Dette gjør koden mer tilgjengelig for alle, og man kan også lettere forstå hvorfor den er bygget opp som den er. 
 
-Vi fant en database med alle spillene i Steam sin nettbutikk i [Kaggle](https://www.kaggle.com/datasets/trolukovich/steam-games-complete-dataset?resource=download), og har selv manuelt lagt til bilde (URL) til alle spillene i databasen. Vi hadde fra starten lyst til å bruke et datasett med bilder, da vi mener dette gjør applikasjonen mer tilgjengelig og estetisk god. Vi har brukt MongoDB som databaseserveren vår, i deres skytjeneste MongoDB Atlas. Her har vi også brukt mongoose til å koble sammen MongoDB og node.js. Mongoose er et ODM (Object Data Modeling) bibliotek for MongoDB. Vi har også brukt GraphQL som i henhold til oppgavebeskrivelsen, samt Express web-rammeverket og Apollo til å sette opp serveren.
+#### Bærekraftig webutvikling
 
-I backenden har vi brukt graphql som query språk, med apolloServer som kjører på express og mongodb for datalagringen. Apollo har fungert ganske bra og gjorde det lett å sette opp graphql definisjoner og endepunkter.
+Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har en enkel knapp i headeren til å bytte tema, som også forteller deg hva slags tema du bruker nå. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen vært nødt til å endre enkelte tekstfarger slik at alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også strøm. Vi valgte også å benytte os av localStorage til å huske brukerens valg. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det som hensiktsmessig å implementere det.
 
-Vi har valgt å bruke mongodb siden det er ganske *plug-n'-play*.
-
-## Testing
-
-Enhetstesting av single page application SPA - React client application
+## Testing i prosjekt 4
 
 ### Frontend
 
-For frontend testing har vi brukt React Testing Library. Dette har vi brukt til å flere av komponentene våre. Her ønkser vi å trekke frem Filter.test.tsx. Her har vi testet at de visuelle elementene til komponentene fungere som det skal når brukeren velger ulike filtre. Vi har også testet filterStore.ts filen gjennom komponent testen. Her fikk vi sørget filtrene lagres i filterStore ettersom brukeren velger ulike filtere.
+[![coverage report](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/badges/main/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/-/commits/main) 
 
-e2e testing er gjort ved hjelp av Cypress. Her har vi testet ut ulike funksjonaliteter vi ser for oss en bruker ville gjort på nettsiden. For eksempel å sjekke ratingen et spill har fått eller å gå inn å legge inn en kommentar på et spill. Den viktigste testfilen vi ønsker å trekke frem her er e2e.cy.js. Vi har også laget et eget test environment som kan startes ved å taste "npm run mock" i backenden.
+(Merk når det snakkes om testdekningsgrad i dette avsnittet er det kun snakk om i frontend)
+
+Vi tester nå alt i applikasjonen som skal kunne testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi nærme 100%. En grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet, og at MUI-biblioteket vi har en del funksjonalitet som er ekstremt vanskelig å teste. Et eksempel på dette er testing av `slider` komponenten. Den er wrappet i flere runder med `div` og `span` elementer med varierende ID'er som gjør det vanskelig å hente ut riktig. Derfor har vi testet så godt som mulig med den tiden vi hadde til rådighet. Vi valgte å ikke bruke mye tid på å teste ekstremt sjeldne edge-cases, men heller teste på mer realistiske tilfeller.
+
+Selvom appen nesten er 100% dekket av tester er vi klar over at dette ikke reflekterer at appen er perfekt dekket, men dekningsgraden var et godt utgangspunkt for å skrive tester. Dette har også gjort at vi har vært nødt til å gå grundig til verks og dermed testet så godt som alt av edge-cases.
+
+### Pipeline added 
+
+En pipeline er et viktig verktøy for å kunne drive med CI/CD (continous integration and continous delivery/deployment). Pipelinen vi opprettet i dette prosjektet kjører koden og testene våre, og sørger for at det ikke har dukket opp noen endringer som enten gir feilmeldinger eller som gjør at noen av testene våre feiler. Dette har hjulpet oss flere ganger under utviklingen med å plukke opp feil før vi fikk merget koden vår til main. Dette er et enkelt grep som kan forhindre at små feil kan bli liggende i koden. Det gjør det også lett for oss å ha en oversikt på testdekningsgraden uten å trenge å kjøre koden selv.
+
+### Komponenttesting
+
+Alle komponentene i prosjektet er grundig testet. Vi har testet komponentene i isolasjon, siden det er mest hensiktsmessig å teste de individuelt. Her har dekningsgraden av testene vært et godt verktøy for å ikke glemme å teste noe. Dekningsgraden har pekt på hvilke linjer som har manglet testing, som har gjort at ingenting har sklidd under radaren.
+
+### Snapshottesting
+
+Vi er kjent med at verdien av snapshottesting mye debattert i utviklermiljøet. I et virkelig prosjekt ville vi ikke nødvendigvis benyttet oss av dette. Vi har valgt å ta det med i dette prosjektet for å lære om hvordan man implementerer snapshottesting.
 
 ### Backend
 
-Testet oppsett av server, testet søking, men det er såpass liten logikk i backend at vi ikke prioriterte å teste det så mye direkte. Gjort mer gjennom frontend og end-2-end.
+I backend har vi forbedret testdekningsgraden til 100%. Alle endpoints'ene er testet. Dette kan ses ved å kjøre testene i backend. 
 
-## Web accessibility - Universell utforming
+### End 2 End
 
-Web accessibility handler om at web applikasjoner skal være tilgjengelig for alle, uavhengig av funksjonsevne, utdanning og alder. Dette er hovedsakelig aspekter som fornuftig design som gir mening, og som er lett å forstå. I Norge har vi en lov, som heter "diskriminerings- og tilgjengelighetesloven". Denne forbyr diskriminering på grunnlag av nedsatt funksjonsevne. Det har også kommet en forskrift om universell utforming av IKT-løsninger, som stiller krav om at 35 av 61 suksesskriterier skal oppfylles. Disse kriteriene er presentert i WCAG 2.0 standarden.
-
-Vi har forsøkt å følge de fire prinsipper for tilgjengelighet i webinnhold på følgende måter i vår applikasjon.
-
-- Mulig å oppfatte: Det eneste innoldet som ikke er i tekstform er bildene, som applikasjonen fungerer like fint uten. De er kun for estetikk og tilgjengelighet for de med dårligere syn. Brukergrensesnittet er svært oversiktlig og har gode kontraster og skiller mellom listeelementer.
-- Mulig å betjene: Hele applikasjonen kan brukes kun ved bruk av tastaturet. Ingen ting går fort eller blinker fort, og det er alltid oversiktlig å vite hvor man befinner seg da det kun er en side med modaler.
-- Forståelig: I mobilformat er applikasjonen lettest å forstå da tekstene er store og lettleselige, med en oversiktlig og forutsigbar layout. Når man har større skjerm blir teksten liten, og dette kunne vært forbedret for å ha en enda mer tilgjengelig applikasjon.
-- Robust: Vi har etterstrebet å skrive applikasjonen på en måte som gjør at koden er oversiktlig og intuitiv, og at den skal være kompatibel med brukeragenter nå med ny teknologi som kommer.
-
-### Tilpasninger vi har gjort:
-
-- Synsproblemer - vi har brukt gode kontraster, og har store fonter på spilltitlene.
-
-- Motorikk - vi har brukt store knapper for spillene som gjør det enkelt å klikke riktig, og bruken av modaler gjør det også enkelt å komme seg ut av et spill når man først har klikket seg inn på det.
-
-- Kognisjon - applikasjonen har ikke mange forstyrrelser, så det er lett å forstå hvor du skal klikke når du ønsker å gjøre noe.
-
-## Bærekraftige avgjørelser
-
-> Løsningen skal demonstrere aspekter ved bærekraftig webutvikling (enten gjennom valg som gjøres i design eller kritisk diskusjon i dokumentasjonen)
-
-Da vi har valgt et datasett med over 40 000 spill, er det mange fallgruver vi måtte passe oss for. Om man alltid skulle lastet inn alle 40 000 spillene hver gang en handling ble utført i applikasjonen, ville dette potensielt kunne ført til mye unødvendig bruk av energi og tid. I det store bildet er ikke 40 000 så mye, men i mange andre situasjoner vil datasett kunne være utrolig mye større.
-Vi har brukt mobx og apollo client til å lagre tilstanden fortløpende så vi ikke trenger å laste inn alt hver gang en handling utføres. Apollo hjelper oss for eksempel ved at det har innebygd caching, som sparer oss for å måtte kalle på samme spill flere ganger. Vi har også brukt pagination, som gjør at bare de første 15 spillene vises i applikasjonen om gangen, og dersom man ønsker å se flere kan man scrolle videre ned. Begge disse tiltakene reduserer energibruken kraftig, noe som bidrar til økt bærekraft. Vi har også få elementer på siden, takket være pagination og begrenset funksjonalitet, som gjør at det blir mindre datatrafikk og gir en bedre brukeropplevelse med mindre rot.
-
-### Hva kunne vi gjort bedre?
-
-- Farger koster i energibruk, og hvit krever mye lys som igjen krever mye energi. Om vi hadde hatt en mørk bakgrunn eller en dark mode, så kunne vi spart mer energi.
-
-- Bilder, videoer og animasjoner koster. Vi har ingen videoer eller animasjoner, noe som er bra. Men vi har valgt å legge til bilder til alle spillene i databasen. Dersom vi ikke hadde lagt til dette, så hadde en god del energi blitt spart. Vi kunne også valgt et bildeformat som er mer effektivt, som for eksempel AVIF.
-
-- Vi har brukt TypeScript i applikasjonen vår, som bruker mye mer energi enn JavaScript. Vi brukte TypeScript da dette var et krav til oppgaven og det skalerer bedre enn JavaScript, men i en så liten applikasjon som dette kunne man tenkt mer bærekraftig og brukt JavaScript.
-
-Hovedpoenget med å vurdere bærekraft i webutvikling er ikke at det enkelte prosjektet har så mye å si, men at om alle er mer oppmerksomme på konsekvensene og hvordan man kan forebygge det, så kan den totale summen få stor utteling. I så godt som alle applikasjoner er det rom for å tenke bærekraftig, uten at det skal gå på bekostning av funksjonalitet, design eller brukervennlighet. Bærekraftsmålene handler ikke om at en handling skal være en fullstendig løsning, men at hvis alle bidrar har vi en bedre sjanse sammen.
+E2E testing vår er ganske uendret fra prosjekt 3, siden vi gjorde det grundig den gang. Det vi har gjort i prosjekt 4 er å tilpasse de eksisterende testene til endringene som er gjort på nettsiden.
