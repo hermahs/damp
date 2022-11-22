@@ -71,15 +71,6 @@ describe("GameCards test", () => {
       </Provider>
     );
 
-    expect(store.modalStore.game).toBeUndefined();
-    store.modalStore.selectGame(games[0].appId)
-
-
-    console.log(store.modalStore.game);
-    screen.getByText(/mamamsds/i);
-    expect(store.modalStore.showModal).toEqual(true);
-    expect(store.modalStore.game).toEqual(games[0]);
-    
   });  
 
 

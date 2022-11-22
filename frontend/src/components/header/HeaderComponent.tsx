@@ -29,8 +29,8 @@ export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) =>
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='relative'>
+    <Box sx={{ flexGrow: 1}}>
+      <AppBar position='relative' sx={{backgroundColor: (props.darkMode? "##1e1e1e":"#283044")}}>
         <Toolbar>
           <Typography variant="h5" sx={{ flexGrow: 1 }} onClick={refreshPage}>
             DAMP
@@ -39,7 +39,7 @@ export function Header(props: {darkMode: boolean, setDarkMode: (val: boolean) =>
             localStorage.setItem("dark-mode", JSON.stringify(!props.darkMode))
             props.setDarkMode(!props.darkMode)
             }}>
-            DarkMode
+            {props.darkMode ? "Dark" : "Light"}
           </Button>
           <Button color="inherit" onClick={handleOpen}>
             ABOUT
