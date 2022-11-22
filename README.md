@@ -31,7 +31,7 @@ Til prosjekt 4 har vi valgt å kombinere to av de mulige oppgavene. Vi valgte å
 * Comments in the code - mer kommentarer i koden for å forklare komplisert funksjonalitet
 * Disable sort button - ikke mulig å klikke på sorter-knappen når ingen parametre er valgt
 * Dynamic loading of data - ikke vise reviews eller ratings dersom informasjonen mangler i databasen
-* Problem with sorting on price - når man sorterer på pris (lav-høy) så skal man se de billigste spillene først, og ikke de som er gratis
+* Problem with sorting on price - når man sorterer på pris (lav-høy) så skal man se de billigste spillene først, og ikke de som mangler pris
 * Improve size of tags box - forstørre listen man velger fra når man velger tags
 
 ### Hvordan har vi gått frem for å forbedre disse?
@@ -57,7 +57,7 @@ En tilbakemelding vi fikk gikk på muligheten til å nagivere nettsiden gjennom 
 
 #### Bærekraftig webutvikling
 
-Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har en enkel knapp i headeren til å bytte tema, som også forteller deg hva slags tema du bruker nå. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen vært nødt til å endre enkelte tekstfarger slik at alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også strøm. Vi valgte også å benytte os av localStorage til å huske brukerens valg, slik at valget ble persistent. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det hensiktsmessig å implementere det.
+Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer bærekraftig er å implementere darkmode. Her har vi for å holde det enkelt valgt å bruke MaterialUI sitt "dark" tema, som fungerte vel. Vi har en enkel knapp i headeren til å bytte tema, som også forteller deg hva slags tema du bruker nå. Vi har også sjekket at fargene fungerer som de skal, og har noen steder i applikasjonen vært nødt til å endre enkelte tekstfarger slik at alt skal synes godt og fortsatt være tilgjengelig. Dark mode er ikke bare mindre anstrengende for øynene, men sparer også strøm. Vi valgte også å benytte os av localStorage til å huske brukerens valg. At vi ikke hadde dark mode ble kommentert i flere av tilbakemeldingene våre, og vi så det som hensiktsmessig å implementere det.
 
 At vi nå viser tre spill i bredden er også mer bærekraftig, da vi benytter mer av plassen til å vise relevant innhold.
 
