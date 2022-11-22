@@ -258,19 +258,19 @@ export const games: Game[] = [
         comments: []
     },
     {
-        name: "Mamma mia",
+        name: "Movistar",
         appId: 379735,
         imagePath: "",
         release_date: "November 6, 1999",
         publisher: ["Børge"],
-        genre: ["RPG"],
+        genre: [],
         all_reviews: "",
         developer: "Ludde",
-        game_description: "Gotta find the Elden Ring",
-        description: "",
+        game_description: "really good",
+        description: "really good",
         achievements: 0,
         languages: ["English"],
-        price: 40,
+        price: 0,
         releaseDate: new Date(),
         comments: []
     }

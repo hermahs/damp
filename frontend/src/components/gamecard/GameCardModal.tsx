@@ -7,7 +7,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../graphQL';
 import { useStores } from '../../hooks';
 import { observer } from 'mobx-react';
-import { color } from '@rneui/base';
 
 const Img = styled('img')({
     margin: 'auto',
@@ -38,14 +37,14 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
     const { store } = useStores();
 
     const showImage = (url: string) => {
-        if (url === null) {
+        if (url === null || url === "") {
             return(<Img alt="complex" src="/images/default.png" />)
         }
         return(<Img alt="complex" src={url} />)
     };
 
     const showList = (list: string[]) => {
-        if (list === null || list === undefined) {
+        if (list === null || list === undefined || list.length === 0) {
             return "..."
         }
 
@@ -58,14 +57,11 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
     };
 
     const showDescription = (text: string) => {
-        try {
-            let t = text.substring(300)
-            let index = t.indexOf('.')
+        let t = text.substring(300)
+        let index = t.indexOf('.')
 
-            return text.substring(17, 300 + index + 1);
-        } catch {
-            return "No description..."
-        }
+        return text.substring(17, 300 + index + 1);
+        
     };
 
     const showPrice = (price: number) => {
@@ -157,12 +153,15 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                             <span style={{fontWeight: 'bold'}}>Achievements: </span> {store.modalStore.game.achievements}
                         </Typography>
                         <br/>
+                        {store.modalStore.game.game_description.length > 20 &&
+                        <> 
                         <Typography gutterBottom variant="h6" component="div">
                             Description
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {showDescription(store.modalStore.game.game_description)}
-                        </Typography>
+                        </Typography> 
+                        </> }
                         <br/>
                         {store.modalStore.game.all_reviews && 
                             <>  
@@ -177,7 +176,7 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                     </CardContent>
                     <CardActions>
                         <Accordion sx={{width: 1}}>
-                            <AccordionSummary expandIcon={<ExpandMore/>}>
+                            <AccordionSummary expandIcon={<ExpandMore/>} data-testid="make_comment">
                                 Add comment
                             </AccordionSummary>
                             <AccordionDetails>
@@ -187,12 +186,12 @@ export const GameCardModal = observer((props: { open: boolean, onClose: ((event?
                                             <TextField label="name" placeholder='username' value={name} onChange={handleChangeName} error={nameError} required data-testid="name_textbox"/>
                                             <Stack direction='row'>
                                                 <Typography component="legend">Rating</Typography>
-                                                <Rating name="rating" value={rating} onChange={handleChangeRating}/>
+                                                <Rating data-testid="rating" name="rating" value={rating} onChange={handleChangeRating}/>
                                             </Stack>
                                         </Stack>
                                         
                                         <TextField label="comment" placeholder='comment' value={comment} onChange={handleChangeComment} multiline rows={4} error={commentError} required data-testid="comment_textbox"/>
-                                        <Button onClick={handleAddComment}  sx={{ boxShadow: 2}} data-testid="add_comment">Add comment</Button>
+                                        <Button onClick={handleAddComment} sx={{ boxShadow: 2}} data-testid="add_comment">Add comment</Button>
                                     </Stack>
                                 </FormControl>
                             </AccordionDetails>

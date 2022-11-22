@@ -1,4 +1,4 @@
-import { render, screen, cleanup, getByAltText, within, fireEvent } from "@testing-library/react";
+import { render, screen, cleanup, getByAltText, within, fireEvent, queryByAttribute } from "@testing-library/react";
 import { GameCards } from "../gamecard";
 import { defaultContext, store } from "../../store";
 import { MockedProvider } from "@apollo/client/testing";
@@ -10,6 +10,9 @@ import { games } from "./testData/Games"
 import { BackToTopButton } from "../gamecard/BackToTopButton";
 import { CommentView } from "../gamecard/Comment";
 import { GameCardModal } from "../gamecard/GameCardModal";
+import { RootStore } from "../../store/rootStore";
+import { ApolloClient, InMemoryCache, NormalizedCacheObject } from "@apollo/client";
+import { ModalStore } from "../../store/modalStore";
 
 const comment: Comment = {
   name: "the watcher",
@@ -17,18 +20,24 @@ const comment: Comment = {
   comment: "i recommend this game",
 };
 
-
-
 window.scrollTo = jest.fn();
 
 afterEach(cleanup);
 
-beforeEach(() => {
+
+
+
+
+let rootStore: RootStore;
+let mockApollo: ApolloClient<NormalizedCacheObject>;
+let mockWatchQuery: any;
+
+beforeEach( async () => {
   store.resetStores()
-  for (let i = 0; i < 16; i++) {
-    store.dataStore.data.push(games[i]);
-  }
+  store.dataStore.data.push(...games);
 })
+
+const getById = queryByAttribute.bind(null, "id");
 
 describe("GameCards test", () => {
 
@@ -52,17 +61,15 @@ describe("GameCards test", () => {
 
     screen.getByText(/elden ring/i);
     screen.getByText(/trackmania/i);
-    screen.getByText(/Mamma mia/i);
+    screen.getByText(/movistar/i);
     
     screen.queryByTestId("back-to-top-button");
 
     fireEvent.click(screen.getByText(/overcooked/i));
   });
 
-
-  it("game card modal test", () => {
-    expect(store.modalStore.game).toBeUndefined();
-    store.modalStore.selectGame(games[0].appId)
+  /*
+  it("game card modal test", async () => {
     render(
       <Provider {...defaultContext}>
         <MockedProvider addTypename={false}> 
@@ -71,7 +78,12 @@ describe("GameCards test", () => {
       </Provider>
     );
 
-  });  
+    //screen.getByText(/msamsd/i);
+    console.log(store.modalStore.selectedGame)
+    console.log(rootStore.modalStore.selectedGame)
+
+
+  });  */
 
 
   it("comment view test", () => {
@@ -99,7 +111,127 @@ describe("GameCards test", () => {
   });  
 });
 
-/*
+
+
+
+describe("game card modal", () => {
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
+  beforeEach( async () => {
+    mockWatchQuery.mockReturnValue({
+      refetch: async (variables: any) => (Promise.resolve({data: {games: [], game: games[0]}}))
+    });
+
+    store.modalStore = new ModalStore(rootStore, mockApollo);
+    store.modalStore.selectGame(games[0].appId)
+  })
+  
+  beforeAll(async () => {
+    mockApollo = new ApolloClient({
+        cache: new InMemoryCache()
+    });
+  
+    mockWatchQuery = jest.spyOn(mockApollo, "watchQuery");
+    mockWatchQuery.mockReturnValue({
+        refetch: async (variables: any) => (Promise.resolve({data: {games: [], game: games[0]}}))
+    });
+    rootStore = new RootStore(mockApollo);
+  });
+
+
+  it("game card modal test", async () => {
+    render(
+      <Provider {...defaultContext}>
+        <MockedProvider addTypename={false}> 
+          <GameCardModal open={true} onClose={() => {}} />
+        </MockedProvider>
+      </Provider>
+    );
+
+    screen.getByText(/overcooked/i);
+    screen.getByText(/42/i);
+    screen.getByText(/59/i);
+  });  
+
+  it("add comment", async () => {
+    render(
+      <Provider {...defaultContext}>
+        <MockedProvider addTypename={false}> 
+          <GameCardModal open={true} onClose={() => {}} />
+        </MockedProvider>
+      </Provider>
+    );
+
+    const r = screen.getByTestId("rating");
+    const nodes = Array.from(r.childNodes).filter(node => {
+      return (node as HTMLElement).tagName === "INPUT";
+    });
+  
+    act(() => {
+      screen.getByTestId("make_comment").click();
+    });
+
+    userEvent.type(screen.getByLabelText(/name/i), "t");
+    userEvent.type(screen.getByLabelText(/comment/i), "t");
+    userEvent.type(screen.getByLabelText(/name/i), "{backspace}");
+    userEvent.type(screen.getByLabelText(/comment/i), "{backspace}");
+    userEvent.click(screen.getByTestId("add_comment"));
+  
+    userEvent.type(screen.getByLabelText(/name/i), "typing");
+    userEvent.type(screen.getByLabelText(/comment/i), "typing");
+    userEvent.click(nodes[2] as HTMLElement);
+
+    userEvent.click(screen.getByTestId("add_comment"));
+  });  
+});
+
+
+describe("game card modal test with some info abouth game", () => {
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
+  beforeEach( async () => {
+    mockWatchQuery.mockReturnValue({
+      refetch: async (variables: any) => (Promise.resolve({data: {games: [], game: games[15]}}))
+    });
+
+    store.modalStore = new ModalStore(rootStore, mockApollo);
+    store.modalStore.selectGame(games[15].appId)
+  })
+  
+  beforeAll(async () => {
+    mockApollo = new ApolloClient({
+        cache: new InMemoryCache()
+    });
+  
+    mockWatchQuery = jest.spyOn(mockApollo, "watchQuery");
+    mockWatchQuery.mockReturnValue({
+        refetch: async (variables: any) => (Promise.resolve({data: {games: [], game: games[15]}}))
+    });
+    rootStore = new RootStore(mockApollo);
+  });
+
+
+  it("game card modal test", async () => {
+    render(
+      <Provider {...defaultContext}>
+        <MockedProvider addTypename={false}> 
+          <GameCardModal open={true} onClose={() => {}} />
+        </MockedProvider>
+      </Provider>
+    );
+
+    console.log(store.modalStore.game?.name)
+    screen.getByText(/movistar/i);
+  });  
+});
+
+
 describe("Filter snapshot test", () => {
   it("render filter component", () => {
     const tree = renderer
@@ -113,4 +245,4 @@ describe("Filter snapshot test", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-}); */
+}); 

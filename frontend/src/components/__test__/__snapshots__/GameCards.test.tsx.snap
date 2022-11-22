@@ -1523,7 +1523,7 @@ exports[`Filter snapshot test render filter component 1`] = `
                 <p
                   className="MuiTypography-root MuiTypography-body1 css-mvvmou-MuiTypography-root"
                 >
-                  Mamma mia
+                  Movistar
                 </p>
               </div>
               <div
@@ -1548,25 +1548,13 @@ exports[`Filter snapshot test render filter component 1`] = `
                 <p
                   className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-186q1z4-MuiTypography-root"
                 >
-                  40$
+                  Free
                 </p>
               </div>
             </div>
             <div
               className="MuiGrid-root MuiGrid-item css-1nyge9p-MuiGrid-root"
-            >
-              <div
-                className="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-sbrmq3-MuiChip-root"
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-              >
-                <span
-                  className="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  RPG
-                </span>
-              </div>
-            </div>
+            />
           </div>
         </div>
         <span
@@ -1605,6 +1593,7 @@ exports[`Filter snapshot test render filter component 1`] = `
     </span>
   </div>
   <div
+    data-testid="back-to-top"
     style={
       Object {
         "bottom": "20px",
