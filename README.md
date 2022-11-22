@@ -49,7 +49,7 @@ Nettsiden er nå gjort mulig å navigere kun gjennom tastaturet. Dette skriver v
 
 #### Backend
 
-Vi fikk ikke mye kommentarer på backenden vår, men vi har forbedret testingen i backend og har også måttet endre noe der så frontend skal fungere som vi vil. 
+Vi fikk ikke noen kommentarer på backenden vår. Dermed har det ikke blitt gjort noen funksjonelle endringer i backenden i denne delen av prosjektet. Det er skrevet flere tester til backend og dette diskuteres mer senere i dokumentasjonen.
 
 #### Web tilgjengelighet
 
@@ -63,11 +63,15 @@ At vi nå viser tre spill i bredden er også mer bærekraftig, da vi benytter me
 
 ## Testing i prosjekt 4
 
-### Dekningsgrad
+### Frontend
 
 [![coverage report](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/badges/main/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/-/commits/main) 
 
-Vi tester nå alt i applikasjonen som klarer å testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi utrolig nærme 100%. Grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet. Selvom appen nesten er 100% dekket av tester er vi klar over at dette ikke reflekterer at appen er perfekt dekket, men dekningsgraden var et godt utgangspunkt. Dette har også gjort at vi har vært nødt til å gå grundigere til verks og testet så godt som alt av edge-cases.
+(Merk når det snakkes om testdekningsgrad i dette avsnittet er det kun snakk om i frontend)
+
+Vi tester nå alt i applikasjonen som klarer å testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi utrolig nærme 100%. En grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet. En annen grunn til at vi ikke nådde 100% er at MUI-biblioteket vi har en del funksjonalitet som er ekstremt vanskelig å teste. Her har vi gjort så godt som mulig med den tiden vi hadde til rådighet. Vi valgte å ikke bruke mye tid på å teste ekstremt sjeldne edge-cases, men heller ser på mer realistiske tilfeller.
+
+Selvom appen nesten er 100% dekket av tester er vi klar over at dette ikke reflekterer at appen er perfekt dekket, men dekningsgraden var et godt utgangspunkt. Dette har også gjort at vi har vært nødt til å gå grundigere til verks og testet så godt som alt av edge-cases.
 
 ### Pipeline added 
 
@@ -81,6 +85,6 @@ Alle komponentene i prosjektet er grundig testet. Vi har testet komponentene i i
 
 Vi er kjent med at verdien av snapshottesting mye debattert i utviklingsmiljøet. I et virkelig prosjekt ville vi ikke nødvendigvis benyttet oss av dette. Vi har valgt å ta det med i dette prosjektet for å lære om hvordan man implementerer snapshottesting.
 
-### Endpoint testing
+### Backend
 
-
+I backend har vi forbedret testdekningsgraden til 100%. Alle endpoints'ene er testet. Dette kan ses ved å kjøre testene i backend. 
