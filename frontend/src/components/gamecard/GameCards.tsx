@@ -30,6 +30,7 @@ export const GameCards = observer(() => {
 
     const handleClose = (event: object, reason: string) => {
         store.modalStore.unSelectGame();
+        
     }
     
     return (

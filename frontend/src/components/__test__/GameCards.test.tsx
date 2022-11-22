@@ -24,10 +24,6 @@ window.scrollTo = jest.fn();
 
 afterEach(cleanup);
 
-
-
-
-
 let rootStore: RootStore;
 let mockApollo: ApolloClient<NormalizedCacheObject>;
 let mockWatchQuery: any;
@@ -37,7 +33,8 @@ beforeEach( async () => {
   store.dataStore.data.push(...games);
 })
 
-const getById = queryByAttribute.bind(null, "id");
+//const getById = queryByAttribute.bind(null, "id");
+
 
 describe("GameCards test", () => {
 
@@ -67,24 +64,6 @@ describe("GameCards test", () => {
 
     fireEvent.click(screen.getByText(/overcooked/i));
   });
-
-  /*
-  it("game card modal test", async () => {
-    render(
-      <Provider {...defaultContext}>
-        <MockedProvider addTypename={false}> 
-          <GameCardModal open={true} onClose={() => {}} />
-        </MockedProvider>
-      </Provider>
-    );
-
-    //screen.getByText(/msamsd/i);
-    console.log(store.modalStore.selectedGame)
-    console.log(rootStore.modalStore.selectedGame)
-
-
-  });  */
-
 
   it("comment view test", () => {
     render(<CommentView name={comment.name} rating={comment.rating} comment={comment.comment} />);
@@ -226,7 +205,6 @@ describe("game card modal test with some info abouth game", () => {
       </Provider>
     );
 
-    console.log(store.modalStore.game?.name)
     screen.getByText(/movistar/i);
   });  
 });
