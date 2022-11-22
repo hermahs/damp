@@ -69,13 +69,13 @@ Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer b�
 
 (Merk når det snakkes om testdekningsgrad i dette avsnittet er det kun snakk om i frontend)
 
-Vi tester nå alt i applikasjonen som skal kunne testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi nærme 100%. En grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet, og at MUI-biblioteket vi har en del funksjonalitet som er ekstremt vanskelig å teste. Et eksempel på dette ser testing av `slider` komponenten. Den er wrappet i flere runder med `div`'s og `span` elementer med varierende ID'er som gjør det vanskelig å hente ut riktig. Her har vi gjort så godt som mulig med den tiden vi hadde til rådighet. Vi valgte å ikke bruke mye tid på å teste ekstremt sjeldne edge-cases, men heller ser på mer realistiske tilfeller.
+Vi tester nå alt i applikasjonen som skal kunne testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi nærme 100%. En grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet, og at MUI-biblioteket vi har en del funksjonalitet som er ekstremt vanskelig å teste. Et eksempel på dette er testing av `slider` komponenten. Den er wrappet i flere runder med `div` og `span` elementer med varierende ID'er som gjør det vanskelig å hente ut riktig. Derfor har vi testet så godt som mulig med den tiden vi hadde til rådighet. Vi valgte å ikke bruke mye tid på å teste ekstremt sjeldne edge-cases, men heller teste på mer realistiske tilfeller.
 
-Selvom appen nesten er 100% dekket av tester er vi klar over at dette ikke reflekterer at appen er perfekt dekket, men dekningsgraden var et godt utgangspunkt. Dette har også gjort at vi har vært nødt til å gå grundigere til verks og testet så godt som alt av edge-cases.
+Selvom appen nesten er 100% dekket av tester er vi klar over at dette ikke reflekterer at appen er perfekt dekket, men dekningsgraden var et godt utgangspunkt for å skrive tester. Dette har også gjort at vi har vært nødt til å gå grundig til verks og dermed testet så godt som alt av edge-cases.
 
 ### Pipeline added 
 
-En pipeline er et viktig verktøy for å kunne drive med CI/CD (continous integration and continous delivery/deployment). Pipelinen vi opprettet i dette prosjektet kjører koden og testene våre, og sørger for at det ikke har dukket opp noen endringer som enten gir en feilmeldinger eller som gjør at noen av testene våre feiler. Dette har hjulpet oss flere ganger under utviklingen med å plukke opp feil før vi fikk merget koden vår til main. Dette er et enkelt grep som kan forhindre at små feil kan bli liggende i koden. Det gjør det også lett for oss å ha en oversikt på testdekningsgraden uten å trenge å kjøre koden selv.
+En pipeline er et viktig verktøy for å kunne drive med CI/CD (continous integration and continous delivery/deployment). Pipelinen vi opprettet i dette prosjektet kjører koden og testene våre, og sørger for at det ikke har dukket opp noen endringer som enten gir feilmeldinger eller som gjør at noen av testene våre feiler. Dette har hjulpet oss flere ganger under utviklingen med å plukke opp feil før vi fikk merget koden vår til main. Dette er et enkelt grep som kan forhindre at små feil kan bli liggende i koden. Det gjør det også lett for oss å ha en oversikt på testdekningsgraden uten å trenge å kjøre koden selv.
 
 ### Komponenttesting
 
@@ -88,6 +88,7 @@ Vi er kjent med at verdien av snapshottesting mye debattert i utviklermiljøet. 
 ### Backend
 
 I backend har vi forbedret testdekningsgraden til 100%. Alle endpoints'ene er testet. Dette kan ses ved å kjøre testene i backend. 
+
 ### End 2 End
 
 E2E testing vår er ganske uendret fra prosjekt 3, siden vi gjorde det grundig den gang. Det vi har gjort i prosjekt 4 er å tilpasse de eksisterende testene til endringene som er gjort på nettsiden.
