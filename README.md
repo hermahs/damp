@@ -65,8 +65,6 @@ Den største endringen vi har gjort i forhold til å gjøre applikasjonen mer b�
 
 ### Frontend
 
-[![coverage report](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/badges/main/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/-/commits/main) 
-
 (Merk når det snakkes om testdekningsgrad i dette avsnittet er det kun snakk om i frontend)
 
 Vi tester nå alt i applikasjonen som skal kunne testes. Dette går fra alt som stores til komponenter og deres funskjoner. Som man ser på testdekningsgraden over er vi nærme 100%. En grunnen til at vi ikke nådde 100% er fordi at dekningsgraden ikke alltid klarer å forstå hva som faktisk er testet, og at MUI-biblioteket vi har en del funksjonalitet som er ekstremt vanskelig å teste. Et eksempel på dette er testing av `slider` komponenten. Den er wrappet i flere runder med `div` og `span` elementer med varierende ID'er som gjør det vanskelig å hente ut riktig. Derfor har vi testet så godt som mulig med den tiden vi hadde til rådighet. Vi valgte å ikke bruke mye tid på å teste ekstremt sjeldne edge-cases, men heller teste på mer realistiske tilfeller.
