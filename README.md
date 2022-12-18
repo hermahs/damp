@@ -1,6 +1,7 @@
-[![coverage report](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/badges/main/coverage.svg)](https://gitlab.stud.idi.ntnu.no/it2810-h22/Team-29/project_4/-/commits/main) 
 
-# Prosjekt 4 - IT2810 Webutvikling
+# Prosjekt 4 - IT2810 Web development
+
+This project was a school project in IT2810 Web development where we were tasked with developing a single paged application display some sort of data in a dataset we picked. The course was taught in norwegian, so all the documentation is in norwegian too.
 
 ## Kommandoer
 
